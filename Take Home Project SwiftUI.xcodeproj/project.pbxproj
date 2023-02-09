@@ -12,6 +12,7 @@
 		47ED3A36299532EF00AE39C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ED3A35299532EF00AE39C3 /* Assets.xcassets */; };
 		47ED3A39299532EF00AE39C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ED3A38299532EF00AE39C3 /* Preview Assets.xcassets */; };
 		47ED3A412995466400AE39C3 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A402995466400AE39C3 /* Symbols.swift */; };
+		47ED3A43299548B100AE39C3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A42299548B100AE39C3 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		47ED3A35299532EF00AE39C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47ED3A38299532EF00AE39C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		47ED3A402995466400AE39C3 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		47ED3A42299548B100AE39C3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				47ED3A402995466400AE39C3 /* Symbols.swift */,
+				47ED3A42299548B100AE39C3 /* Theme.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47ED3A412995466400AE39C3 /* Symbols.swift in Sources */,
+				47ED3A43299548B100AE39C3 /* Theme.swift in Sources */,
 				47ED3A34299532ED00AE39C3 /* ContentView.swift in Sources */,
 				47ED3A32299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift in Sources */,
 			);

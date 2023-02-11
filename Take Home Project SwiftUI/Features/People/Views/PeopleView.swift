@@ -14,15 +14,14 @@ struct PeopleView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                
                 PeopleViewBackground()
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 16) {
                         
                         ForEach(0...5, id: \.self) { item in
-                            
                             PersonItemView(user: item)
-
                         }
                     }
                     .padding()

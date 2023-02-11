@@ -19,16 +19,8 @@ struct PersonItemView: View {
                 .frame(height: 130)
             
             VStack(alignment: .leading) {
-                VStack {
-                    
-                    Text("#\(user)")
-                        .font(.system(.caption, design: .rounded, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 9)
-                        .padding(.vertical, 4)
-                        .background(Theme.pill, in: Capsule())
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                PillView(id: user)
                 
                 Text("<First name> <Last name>")
                     .foregroundColor(Theme.text)
@@ -48,5 +40,6 @@ struct PersonItemView: View {
 struct PersonItemView_Previews: PreviewProvider {
     static var previews: some View {
         PersonItemView(user: 5)
+            .frame(width: 200)
     }
 }

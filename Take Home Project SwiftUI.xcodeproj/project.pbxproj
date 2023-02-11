@@ -14,6 +14,7 @@
 		47807A0A2997803700AE1163 /* UsersStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = 47807A092997803700AE1163 /* UsersStaticData.json */; };
 		47807A0E2997817800AE1163 /* UserDetailsStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = 47807A0D2997817800AE1163 /* UserDetailsStaticData.json */; };
 		47807A102997A45300AE1163 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47807A0F2997A45300AE1163 /* PeopleView.swift */; };
+		47807A122997E5E300AE1163 /* PersonItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47807A112997E5E300AE1163 /* PersonItemView.swift */; };
 		47ED3A32299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A31299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift */; };
 		47ED3A36299532EF00AE39C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ED3A35299532EF00AE39C3 /* Assets.xcassets */; };
 		47ED3A39299532EF00AE39C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ED3A38299532EF00AE39C3 /* Preview Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		47807A092997803700AE1163 /* UsersStaticData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UsersStaticData.json; sourceTree = "<group>"; };
 		47807A0D2997817800AE1163 /* UserDetailsStaticData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserDetailsStaticData.json; sourceTree = "<group>"; };
 		47807A0F2997A45300AE1163 /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
+		47807A112997E5E300AE1163 /* PersonItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonItemView.swift; sourceTree = "<group>"; };
 		47ED3A2E299532ED00AE39C3 /* Take Home Project SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Take Home Project SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47ED3A31299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Take_Home_Project_SwiftUIApp.swift; sourceTree = "<group>"; };
 		47ED3A35299532EF00AE39C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				47807A0F2997A45300AE1163 /* PeopleView.swift */,
+				47807A112997E5E300AE1163 /* PersonItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				47807A0129976E9600AE1163 /* Models.swift in Sources */,
 				47ED3A43299548B100AE39C3 /* Theme.swift in Sources */,
 				47807A0429976F0900AE1163 /* StaticJSONMapper.swift in Sources */,
+				47807A122997E5E300AE1163 /* PersonItemView.swift in Sources */,
 				47ED3A32299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

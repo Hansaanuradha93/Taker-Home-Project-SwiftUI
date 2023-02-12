@@ -38,8 +38,14 @@ struct PersonItemView: View {
 }
 
 struct PersonItemView_Previews: PreviewProvider {
+    
+    static var previewUser: User {
+        let users = try! StaticJSONMapper.decode(file: "UsersStaticData", type: UsersResponse.self).data
+        return users.first!
+    }
+    
     static var previews: some View {
-        PersonItemView(user: User(id: 1, email: "email@gmail.com", firstName: "John", lastName: "Wick", avatar: "something"))
+        PersonItemView(user: previewUser)
             .frame(width: 200)
     }
 }

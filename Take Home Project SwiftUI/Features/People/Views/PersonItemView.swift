@@ -14,9 +14,16 @@ struct PersonItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             
-            Rectangle()
-                .fill(.blue)
-                .frame(height: 130)
+            AsyncImage(url: .init(string: user.avatar)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 130)
+                    .clipped()
+            } placeholder: {
+                ProgressView()
+            }
+
             
             VStack(alignment: .leading) {
                 

@@ -11,5 +11,6 @@ enum Symbols {
     static let plus = Image(systemName: "plus")
     static let person = Image(systemName: "person.2")
     static let gear = Image(systemName: "gear")
+    static let link = Image(systemName: "link")
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		476AFEA32998E6F000C4A3C7 /* PeopleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFEA22998E6F000C4A3C7 /* PeopleDetailView.swift */; };
+		476AFEA52998E98B00C4A3C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFEA42998E98B00C4A3C7 /* BackgroundView.swift */; };
 		478079FA29976D0100AE1163 /* UserDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478079F929976D0100AE1163 /* UserDetailsResponse.swift */; };
 		478079FC29976D7E00AE1163 /* UsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478079FB29976D7E00AE1163 /* UsersResponse.swift */; };
 		47807A0129976E9600AE1163 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47807A0029976E9600AE1163 /* Models.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		476AFEA22998E6F000C4A3C7 /* PeopleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDetailView.swift; sourceTree = "<group>"; };
+		476AFEA42998E98B00C4A3C7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		478079F929976D0100AE1163 /* UserDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsResponse.swift; sourceTree = "<group>"; };
 		478079FB29976D7E00AE1163 /* UsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersResponse.swift; sourceTree = "<group>"; };
 		47807A0029976E9600AE1163 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 			children = (
 				47807A0F2997A45300AE1163 /* PeopleView.swift */,
 				47807A112997E5E300AE1163 /* PersonItemView.swift */,
+				476AFEA42998E98B00C4A3C7 /* BackgroundView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 		47ED3A5029954AA700AE39C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				476AFEA22998E6F000C4A3C7 /* PeopleDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -345,10 +351,12 @@
 				47807A102997A45300AE1163 /* PeopleView.swift in Sources */,
 				47ED3A412995466400AE39C3 /* Symbols.swift in Sources */,
 				47807A0129976E9600AE1163 /* Models.swift in Sources */,
+				476AFEA52998E98B00C4A3C7 /* BackgroundView.swift in Sources */,
 				47ED3A43299548B100AE39C3 /* Theme.swift in Sources */,
 				47807A0429976F0900AE1163 /* StaticJSONMapper.swift in Sources */,
 				47807A122997E5E300AE1163 /* PersonItemView.swift in Sources */,
 				47ED3A32299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift in Sources */,
+				476AFEA32998E6F000C4A3C7 /* PeopleDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

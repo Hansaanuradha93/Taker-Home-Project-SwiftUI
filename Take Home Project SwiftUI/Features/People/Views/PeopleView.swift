@@ -16,7 +16,7 @@ struct PeopleView: View {
         NavigationView {
             ZStack {
                 
-                PeopleViewBackground()
+                BackgroundView()
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 16) {
@@ -56,15 +56,6 @@ struct PeopleView: View {
 struct PeopleView_Previews: PreviewProvider {
     static var previews: some View {
         PeopleView()
-    }
-}
-
-// MARK: -  PeopleViewBackground
-struct PeopleViewBackground: View {
-    
-    var body: some View {
-        Theme.background
-            .ignoresSafeArea(edges: .all)
     }
 }
 

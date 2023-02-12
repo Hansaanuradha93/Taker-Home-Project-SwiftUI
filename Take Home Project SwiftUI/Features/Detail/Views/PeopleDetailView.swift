@@ -19,15 +19,8 @@ struct PeopleDetailView: View {
             ScrollView {
                 
                 VStack(alignment: .leading, spacing: 18) {
-                    AsyncImage(url: .init(string: userInfo?.data.avatar ?? "")) { image in
-                        image
-                            .resizable()
-                            .frame(height: 230)
-                            .aspectRatio(contentMode: .fill)
-                            .clipped()
-                    } placeholder: {
-                        ProgressView()
-                    }
+                    
+                    PersonAvatarImageView(userInfo: userInfo)
                     
                     Group {
                         // Detail
@@ -46,6 +39,7 @@ struct PeopleDetailView: View {
                 
             }
         }
+        .navigationTitle("Details")
         .onAppear {
             do {
                 let userInfo = try StaticJSONMapper.decode(file: "UserDetailsStaticData", type: UserDetailsResponse.self)
@@ -66,7 +60,33 @@ struct PeopleDetailView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        PeopleDetailView(userInfo: previewUserInfo)
+        NavigationView {
+            PeopleDetailView(userInfo: previewUserInfo)
+        }
+    }
+}
+
+// MARK: - PersonAvatarImageView
+struct PersonAvatarImageView: View {
+    
+    let userInfo: UserDetailsResponse?
+    
+    var body: some View {
+        
+        if let avatarAbsoluteString = userInfo?.data.avatar,
+           let avatarURL = URL(string: avatarAbsoluteString) {
+            
+            AsyncImage(url: avatarURL) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 250)
+                    .clipped()
+            } placeholder: {
+                ProgressView()
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        }
     }
 }
 
@@ -116,7 +136,7 @@ struct PersonDetialFormView: View {
 // MARK: - LinkView
 struct LinkView: View {
     
-    var userInfo: UserDetailsResponse?
+    let userInfo: UserDetailsResponse?
         
     var body: some View {
         

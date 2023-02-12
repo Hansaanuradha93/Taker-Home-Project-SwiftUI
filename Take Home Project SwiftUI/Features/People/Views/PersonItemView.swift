@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PersonItemView: View {
     
-    let user: Int
+    let user: User
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -20,14 +20,14 @@ struct PersonItemView: View {
             
             VStack(alignment: .leading) {
                 
-                PillView(id: user)
+                PillView(id: user.id)
                 
-                Text("<First name> <Last name>")
+                Text("\(user.firstName) \(user.lastName)")
                     .foregroundColor(Theme.text)
                     .font(.system(.body, design: .rounded))
             }
             .padding(.horizontal, 8)
-            
+            .padding(.bottom, 8)
             
         }
         .background(Theme.detailBackground)
@@ -39,7 +39,7 @@ struct PersonItemView: View {
 
 struct PersonItemView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonItemView(user: 5)
+        PersonItemView(user: User(id: 1, email: "email@gmail.com", firstName: "John", lastName: "Wick", avatar: "something"))
             .frame(width: 200)
     }
 }

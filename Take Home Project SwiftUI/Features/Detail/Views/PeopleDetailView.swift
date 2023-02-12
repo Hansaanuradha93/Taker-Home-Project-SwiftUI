@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PeopleDetailView: View {
     
-    var user: User
+    @State var userInfo: UserDetailsResponse?
     
     var body: some View {
         
@@ -19,7 +19,7 @@ struct PeopleDetailView: View {
             ScrollView {
                 
                 VStack(alignment: .leading, spacing: 18) {
-                    AsyncImage(url: .init(string: user.avatar)) { image in
+                    AsyncImage(url: .init(string: userInfo?.data.avatar ?? "")) { image in
                         image
                             .resizable()
                             .frame(height: 230)
@@ -31,10 +31,11 @@ struct PeopleDetailView: View {
                     
                     Group {
                         // Detail
-                        PersonDetialFormView(user: user)
+                        PersonDetialFormView(user: userInfo?.data)
                         
-                        // Link
-                        LinkView(link: "https://reqres.in/#support-heading")
+                        // Support URL
+                        LinkView(userInfo: userInfo)
+                        
                     }
                     .padding(.horizontal, 8)
                     .padding(.vertical, 10)
@@ -42,22 +43,30 @@ struct PeopleDetailView: View {
                     
                 }
                 .padding()
-
+                
             }
         }
-        
+        .onAppear {
+            do {
+                let userInfo = try StaticJSONMapper.decode(file: "UserDetailsStaticData", type: UserDetailsResponse.self)
+                self.userInfo = userInfo
+            } catch (let error) {
+                // TODO: handle errors
+                print("‼️ Error: \(error)")
+            }
+        }
     }
 }
 
 struct PeopleDetailView_Previews: PreviewProvider {
     
-    static var previewUser: User {
-        let users = try! StaticJSONMapper.decode(file: "UsersStaticData", type: UsersResponse.self).data
-        return users.first!
+    static var previewUserInfo: UserDetailsResponse {
+        let userInfo = try! StaticJSONMapper.decode(file: "UserDetailsStaticData", type: UserDetailsResponse.self)
+        return userInfo
     }
     
     static var previews: some View {
-        PeopleDetailView(user: previewUser)
+        PeopleDetailView(userInfo: previewUserInfo)
     }
 }
 
@@ -80,25 +89,25 @@ struct PersonDetailView: View {
 // MARK: - PersonDetialFormView
 struct PersonDetialFormView: View {
     
-    let user: User
+    let user: User?
     
     var body: some View {
         VStack (alignment: .leading, spacing: 8) {
             
-            PillView(id: user.id)
+            PillView(id: (user?.id ?? 0))
             
             // first name
-            PersonDetailView(label: "First Name", value: "\(user.firstName)")
+            PersonDetailView(label: "First Name", value: "\(user?.firstName ?? "--")")
             
             Divider()
             
             // last name
-            PersonDetailView(label: "Last Name", value: "\(user.lastName)")
+            PersonDetailView(label: "Last Name", value: "\(user?.lastName ?? "--")")
             
             Divider()
             
             // email
-            PersonDetailView(label: "Email", value: "\(user.email)")
+            PersonDetailView(label: "Email", value: "\(user?.email ?? "--")")
             
         }
     }
@@ -107,31 +116,35 @@ struct PersonDetialFormView: View {
 // MARK: - LinkView
 struct LinkView: View {
     
-    let link: String
-    
+    var userInfo: UserDetailsResponse?
+        
     var body: some View {
         
-        Link(destination: .init(string: link)!) {
-            HStack(alignment: .top) {
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Support Reqres")
-                        .foregroundColor(Theme.text)
-                        .font(.system(.body, design: .rounded, weight: .semibold))
+        if let supportAbsoluteString = userInfo?.support.url,
+           let supportURL = URL(string: supportAbsoluteString),
+           let supportText = userInfo?.support.text {
+            
+            Link(destination: supportURL) {
+                HStack(alignment: .top) {
                     
-                    Text("\(link)")
-                        .font(.system(.subheadline, design: .rounded))
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(supportText)
+                            .foregroundColor(Theme.text)
+                            .font(.system(.body, design: .rounded, weight: .semibold))
+                            .multilineTextAlignment(.leading)
+                        
+                        Text("\(supportAbsoluteString)")
+                            .font(.system(.subheadline, design: .rounded))
+                        
+                    }
                     
+                    Spacer()
+                    
+                    Symbols
+                        .link
+                        .font(.system(.title3, design: .rounded))
                 }
-                
-                Spacer()
-                
-                Symbols
-                    .link
-                    .font(.system(.title3, design: .rounded))
-                
             }
         }
-
     }
 }

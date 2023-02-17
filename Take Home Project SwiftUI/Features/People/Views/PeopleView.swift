@@ -40,9 +40,7 @@ struct PeopleView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     
-                    CreateButton {
-                        shouldShowCreate.toggle()
-                    }
+                    createButton
                 }
             }
             .onAppear {
@@ -69,18 +67,13 @@ struct PeopleView_Previews: PreviewProvider {
     }
 }
 
-// MARK: - ToolBarPlusButton
-struct CreateButton: View {
+// MARK: - PeopleView
+private extension PeopleView {
     
-    var action: (() -> Void)?
-    
-    var body: some View {
+    var createButton: some View {
         
-        Button {
-            action?()
-        } label: {
-            Symbols.plus
-                .font(.system(.headline, design: .rounded, weight: .bold))
+        ToolbarButton(image: Symbols.plus) {
+            shouldShowCreate.toggle()
         }
     }
 }

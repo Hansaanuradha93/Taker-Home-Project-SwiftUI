@@ -9,7 +9,21 @@ import SwiftUI
 
 struct CreateView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        Form {
+            
+            firstName
+            
+            lastName
+            
+            job
+
+            Section {
+                
+                submit
+            }
+            
+        }
     }
 }
 
@@ -18,3 +32,26 @@ struct CreateView_Previews: PreviewProvider {
         CreateView()
     }
 }
+
+// MARK: - CreateView
+private extension CreateView {
+    
+    var firstName: some View {
+        TextField("First name", text: .constant(""))
+    }
+    
+    var lastName: some View {
+        TextField("Last name", text: .constant(""))
+    }
+    
+    var job: some View {
+        TextField("Job", text: .constant(""))
+    }
+    
+    var submit: some View {
+        Button("Submit") {
+            // TODO: Handle action
+        }
+    }
+}
+

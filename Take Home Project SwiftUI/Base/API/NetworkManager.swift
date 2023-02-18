@@ -20,7 +20,7 @@ extension NetworkManager {
     /// Request api and resturns decoded data
     /// - Parameters:
     ///   - endPoint: Endpoint url
-    ///   - httpMethod: Https method type
+    ///   - httpMethod: Http method type
     ///   - type: Response decoding type
     ///   - completion: Returns decoded json data or error
     func request<T: Codable>(endPoint: EndPoint,
@@ -74,7 +74,7 @@ extension NetworkManager {
     /// Request api and returns the result
     /// - Parameters:
     ///   - endPoint: Endpoint url
-    ///   - httpMethod: Https method type
+    ///   - httpMethod: Http method type
     ///   - completion: Returns status or error
     func request(endPoint: EndPoint,
                  httpMethod: HttpMethod = .GET,

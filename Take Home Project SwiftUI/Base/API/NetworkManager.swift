@@ -64,6 +64,37 @@ extension NetworkMaanager {
         
         dataTask.resume()
     }
+    
+    func request(httpMethod: HttpMethod = .GET,
+                 endPoint: EndPoint,
+                 completion: @escaping (Result<Void, Error>) -> Void) {
+        
+        guard let url = endPoint.url else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+
+        let urlRequest = buildRequest(from: url, methodType: httpMethod)
+                
+        let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            
+            if let error = error {
+                completion(.failure(NetworkError.customError(error: error)))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                  (200...300) ~= response.statusCode else {
+                let statusCode = (response as! HTTPURLResponse).statusCode
+                completion(.failure(NetworkError.invalidStatusCode(statusCode: statusCode)))
+                return
+            }
+            
+            completion(.success(()))
+        }
+        
+        dataTask.resume()
+    }
 }
 
 // MARK: - Helper Methods

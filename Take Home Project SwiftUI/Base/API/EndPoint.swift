@@ -11,6 +11,9 @@ import Foundation
 enum EndPoint {
     case users(page: Int)
     case userDetails(id: Int)
+    case createUser
+    case updateUser(id: Int)
+    case deleteUser(id: Int)
 }
 
 
@@ -35,6 +38,12 @@ extension EndPoint {
             return "/api/users"
         case .userDetails(let id):
             return "/api/users/\(id)"
+        case .createUser:
+            return "/api/users"
+        case .updateUser(let id):
+            return "/api/users/\(id)"
+        case .deleteUser(let id):
+            return "/api/users/\(id)"
         }
     }
 }
@@ -49,6 +58,12 @@ extension EndPoint {
             return ["page": "\(page)"]
         case .userDetails:
             return ["": ""]
+        case .createUser:
+            return ["": ""]
+        case .updateUser:
+            return ["": ""]
+        case .deleteUser:
+            return ["": ""]
         }
     }
 }
@@ -59,10 +74,12 @@ extension EndPoint {
     
     private var queryComponents: [URLQueryItem] {
         var components = [URLQueryItem]()
+        
         for(key, value) in parameters {
             let queryItem = URLQueryItem(name: key, value: "\(value)")
             components.append(queryItem)
         }
+        
         return components
     }
 }

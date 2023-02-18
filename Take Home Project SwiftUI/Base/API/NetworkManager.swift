@@ -14,11 +14,11 @@ final class NetworkMaanager {
     private init() {}
 }
 
-// MARK: API Calls
+// MARK: - API Calls
 extension NetworkMaanager {
     
-    func request<T: Codable>(httpMethod: HttpMethod = .GET,
-                             endPoint: EndPoint,
+    func request<T: Codable>(endPoint: EndPoint,
+                             httpMethod: HttpMethod = .GET,
                              type: T.Type,
                              completion: @escaping (Result<T, Error>) -> Void) {
         
@@ -65,8 +65,8 @@ extension NetworkMaanager {
         dataTask.resume()
     }
     
-    func request(httpMethod: HttpMethod = .GET,
-                 endPoint: EndPoint,
+    func request(endPoint: EndPoint,
+                 httpMethod: HttpMethod = .GET,
                  completion: @escaping (Result<Void, Error>) -> Void) {
         
         guard let url = endPoint.url else {

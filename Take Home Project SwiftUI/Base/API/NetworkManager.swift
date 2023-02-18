@@ -14,17 +14,21 @@ final class NetworkMaanager {
     private init() {}
 }
 
+// MARK: API Calls
 extension NetworkMaanager {
     
-    func request<T: Codable>(absoluteURL: String, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+    func request<T: Codable>(httpMethod: HttpMethod = .GET,
+                             endPoint: EndPoint,
+                             type: T.Type,
+                             completion: @escaping (Result<T, Error>) -> Void) {
         
-        guard let url = URL(string: absoluteURL) else {
+        guard let url = endPoint.url else {
             completion(.failure(NetworkError.invalidURL))
             return
         }
-        
-        let urlRequest = URLRequest(url: url)
-        
+
+        let urlRequest = buildRequest(from: url, methodType: httpMethod)
+                
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             
             if let error = error {
@@ -62,6 +66,31 @@ extension NetworkMaanager {
     }
 }
 
+// MARK: - Helper Methods
+private extension NetworkMaanager {
+    
+    func buildRequest(from url: URL,
+                      methodType: HttpMethod) -> URLRequest {
+        
+        var request = URLRequest(url: url)
+        
+        switch methodType {
+        case .GET:
+            request.httpMethod = "GET"
+        case .POST(let data):
+            request.httpMethod = "POST"
+            request.httpBody = data
+        case .PUT(let data):
+            request.httpMethod = "PUT"
+            request.httpBody = data
+        case .DELETE:
+            request.httpMethod = "DELETE"
+        }
+        
+        return request
+    }
+}
+
 // MARK: - Error Handling
 extension NetworkMaanager {
     
@@ -71,6 +100,17 @@ extension NetworkMaanager {
         case invalidStatusCode(statusCode: Int)
         case invaliData
         case faildToDecode(error: Error)
+    }
+}
+
+// MARK: - HTTP Methods
+extension NetworkMaanager {
+    
+    enum HttpMethod {
+        case GET
+        case POST(data: Data?)
+        case PUT(data: Data?)
+        case DELETE
     }
 }
 

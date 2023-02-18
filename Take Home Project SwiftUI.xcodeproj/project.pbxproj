@@ -166,9 +166,9 @@
 		47ED3A4529954A0700AE39C3 /* People */ = {
 			isa = PBXGroup;
 			children = (
-				47ED3A4C29954A6D00AE39C3 /* View Models */,
 				47ED3A4B29954A6200AE39C3 /* Model */,
 				47ED3A4A29954A5C00AE39C3 /* Views */,
+				47ED3A4C29954A6D00AE39C3 /* View Models */,
 			);
 			path = People;
 			sourceTree = "<group>";
@@ -176,9 +176,9 @@
 		47ED3A4629954A1D00AE39C3 /* Create */ = {
 			isa = PBXGroup;
 			children = (
-				47ED3A4F29954A9B00AE39C3 /* View Models */,
 				47ED3A4E29954A9300AE39C3 /* Model */,
 				47ED3A4D29954A8600AE39C3 /* Views */,
+				47ED3A4F29954A9B00AE39C3 /* View Models */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -186,9 +186,9 @@
 		47ED3A4729954A3000AE39C3 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				47ED3A5229954AB800AE39C3 /* View Models */,
 				47ED3A5129954AB000AE39C3 /* Model */,
 				47ED3A5029954AA700AE39C3 /* Views */,
+				47ED3A5229954AB800AE39C3 /* View Models */,
 			);
 			path = Detail;
 			sourceTree = "<group>";

@@ -16,11 +16,11 @@ struct StaticJSONMapper {
             throw MappingError.failedToNavigateTOJSONFile
         }
         
-        let docoder = JSONDecoder()
-        docoder.keyDecodingStrategy = .convertFromSnakeCase
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
 
         do {
-            let result = try docoder.decode(type, from: data)
+            let result = try decoder.decode(type, from: data)
             return result
         } catch (let error) {
             print("‼️ static JSON decoding error: \(error)")

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4730271329A0994B00817BD1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730271229A0994B00817BD1 /* NetworkManager.swift */; };
 		476AFEA32998E6F000C4A3C7 /* PeopleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFEA22998E6F000C4A3C7 /* PeopleDetailView.swift */; };
 		476AFEA52998E98B00C4A3C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFEA42998E98B00C4A3C7 /* BackgroundView.swift */; };
 		4774793F299FA86500CCB754 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4774793E299FA86500CCB754 /* CreateView.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4730271229A0994B00817BD1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		476AFEA22998E6F000C4A3C7 /* PeopleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDetailView.swift; sourceTree = "<group>"; };
 		476AFEA42998E98B00C4A3C7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		4774793E299FA86500CCB754 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4730271129A0993B00817BD1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4730271229A0994B00817BD1 /* NetworkManager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		478079F529976B7B00AE1163 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +213,7 @@
 		47ED3A4929954A4400AE39C3 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				4730271129A0993B00817BD1 /* API */,
 				47807A132997E6E800AE1163 /* Views */,
 				47807A0229976EF900AE1163 /* Mapper */,
 				478079FD29976E7F00AE1163 /* Model */,
@@ -363,6 +374,7 @@
 				4774793F299FA86500CCB754 /* CreateView.swift in Sources */,
 				47807A0429976F0900AE1163 /* StaticJSONMapper.swift in Sources */,
 				47807A122997E5E300AE1163 /* PersonItemView.swift in Sources */,
+				4730271329A0994B00817BD1 /* NetworkManager.swift in Sources */,
 				47ED3A32299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift in Sources */,
 				476AFEA32998E6F000C4A3C7 /* PeopleDetailView.swift in Sources */,
 			);

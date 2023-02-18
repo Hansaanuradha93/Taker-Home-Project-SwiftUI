@@ -32,11 +32,11 @@ final class CreateViewModel: ObservableObject {
                     self?.submissionState = .unsuccessful
                 }
             }
-            
         }
     }
 }
 
+// MARK: - Submission State
 extension CreateViewModel {
     
     enum SubmissionState {

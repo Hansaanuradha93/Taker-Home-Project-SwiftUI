@@ -26,7 +26,7 @@ struct PeopleView: View {
                         ForEach(viewModel.users, id: \.id) { user in
                             
                             NavigationLink {
-                                PeopleDetailView(userId: user.id)
+                                UserDetailsView(userId: user.id)
                             } label: {
                                 PersonItemView(user: user)
                             }

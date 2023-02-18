@@ -1,5 +1,5 @@
 //
-//  PeopleDetailView.swift
+//  UserDetailView.swift
 //  Take Home Project SwiftUI
 //
 //  Created by Hansa Anuradha on 2023-02-12.
@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct PeopleDetailView: View {
+struct UserDetailsView: View {
     
     var userId: Int
-    @State var userInfo: UserDetailsResponse?
+    
+    @StateObject private var viewModel = UserDetailsViewModel()
     
     var body: some View {
         
@@ -21,14 +22,14 @@ struct PeopleDetailView: View {
                 
                 VStack(alignment: .leading, spacing: 18) {
                     
-                    PersonAvatarImageView(userInfo: userInfo)
+                    PersonAvatarImageView(userInfo: viewModel.userInfo)
                     
                     Group {
                         // Detail
-                        PersonDetialFormView(user: userInfo?.data)
+                        PersonDetialFormView(user: viewModel.userInfo?.data)
                         
                         // Support URL
-                        LinkView(userInfo: userInfo)
+                        LinkView(userInfo: viewModel.userInfo)
                         
                     }
                     .padding(.horizontal, 8)
@@ -42,39 +43,22 @@ struct PeopleDetailView: View {
         }
         .navigationTitle("Details")
         .onAppear {
-//            do {
-//                let userInfo = try StaticJSONMapper.decode(file: "UserDetailsStaticData", type: UserDetailsResponse.self)
-//                self.userInfo = userInfo
-//            } catch (let error) {
-//                // TODO: handle errors
-//                print("‼️ Error: \(error)")
-//            }
             
-            NetworkManager.shared.request(endPoint: .userDetails(id: userId), type: UserDetailsResponse.self) { result in
-                
-                switch result {
-                    
-                case .success(let response):
-                    self.userInfo = response
-                    
-                case .failure(let error):
-                    print("🔴 error: \(error)")
-                }
-            }
+            viewModel.fetchUserDetails(for: userId)
         }
     }
 }
 
 struct PeopleDetailView_Previews: PreviewProvider {
     
-    static var previewUserInfo: UserDetailsResponse {
+    static var previewUserId: Int {
         let userInfo = try! StaticJSONMapper.decode(file: "UserDetailsStaticData", type: UserDetailsResponse.self)
-        return userInfo
+        return userInfo.data.id
     }
     
     static var previews: some View {
         NavigationView {
-            PeopleDetailView(userId: 1, userInfo: previewUserInfo)
+            UserDetailsView(userId: previewUserId)
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  PeopleViewModel.swift
+//  PeopleDetailViewModel.swift
 //  Take Home Project SwiftUI
 //
 //  Created by Hansa Anuradha on 2023-02-18.
@@ -7,20 +7,20 @@
 
 import Foundation
 
-final class PeopleViewModel: ObservableObject {
+final class UserDetailsViewModel: ObservableObject {
     
-    @Published private(set) var users: [User] = []
+    @Published private(set) var userInfo: UserDetailsResponse?
     
-    func fetchUsers(onPage page: Int = 1) {
+    func fetchUserDetails(for userId: Int) {
         
-        NetworkManager.shared.request(endPoint: .users(page: page),
-                                      type: UsersResponse.self) { [weak self] result in
+        NetworkManager.shared.request(endPoint: .userDetails(id: userId),
+                                      type: UserDetailsResponse.self) { [weak self] result in
             
             DispatchQueue.main.async {
                 switch result {
                     
                 case .success(let response):
-                    self?.users = response.data
+                    self?.userInfo = response
                     
                 case .failure(let error):
                     print("🔴 error: \(error)")

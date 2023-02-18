@@ -7,16 +7,22 @@
 
 import Foundation
 
-final class NetworkMaanager {
+final class NetworkManager {
     
-    static let shared = NetworkMaanager()
+    static let shared = NetworkManager()
     
     private init() {}
 }
 
 // MARK: - API Calls
-extension NetworkMaanager {
+extension NetworkManager {
     
+    /// Request api and resturns decoded data
+    /// - Parameters:
+    ///   - endPoint: Endpoint url
+    ///   - httpMethod: Https method type
+    ///   - type: Response decoding type
+    ///   - completion: Returns decoded json data or error
     func request<T: Codable>(endPoint: EndPoint,
                              httpMethod: HttpMethod = .GET,
                              type: T.Type,
@@ -65,6 +71,11 @@ extension NetworkMaanager {
         dataTask.resume()
     }
     
+    /// Request api and returns the result
+    /// - Parameters:
+    ///   - endPoint: Endpoint url
+    ///   - httpMethod: Https method type
+    ///   - completion: Returns status or error
     func request(endPoint: EndPoint,
                  httpMethod: HttpMethod = .GET,
                  completion: @escaping (Result<Void, Error>) -> Void) {
@@ -98,8 +109,13 @@ extension NetworkMaanager {
 }
 
 // MARK: - Helper Methods
-private extension NetworkMaanager {
+private extension NetworkManager {
     
+    /// Build a URLRequest object
+    /// - Parameters:
+    ///   - url: URL object
+    ///   - methodType: Http method type
+    /// - Returns: URLObject with http methods, and http body
     func buildRequest(from url: URL,
                       methodType: HttpMethod) -> URLRequest {
         
@@ -123,7 +139,7 @@ private extension NetworkMaanager {
 }
 
 // MARK: - Error Handling
-extension NetworkMaanager {
+extension NetworkManager {
     
     enum NetworkError: Error {
         case invalidURL
@@ -135,7 +151,7 @@ extension NetworkMaanager {
 }
 
 // MARK: - HTTP Methods
-extension NetworkMaanager {
+extension NetworkManager {
     
     enum HttpMethod {
         case GET

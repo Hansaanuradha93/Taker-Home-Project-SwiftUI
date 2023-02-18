@@ -45,7 +45,7 @@ struct PeopleView: View {
             }
             .onAppear {
                 
-                NetworkMaanager.shared.request(endPoint: .users(page: 1), type: UsersResponse.self) { result in
+                NetworkManager.shared.request(endPoint: .users(page: 1), type: UsersResponse.self) { result in
                     
                     switch result {
                     case .success(let response):

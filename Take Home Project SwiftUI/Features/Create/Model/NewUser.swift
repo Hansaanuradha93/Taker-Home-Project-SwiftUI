@@ -11,9 +11,4 @@ struct NewUser: Codable {
     var firstName: String = ""
     var lastName: String = ""
     var job: String = ""
-    
-//    var name: String {
-//        let name = "\(firstName) \(lastName)"
-//        return name
-//    }
 }

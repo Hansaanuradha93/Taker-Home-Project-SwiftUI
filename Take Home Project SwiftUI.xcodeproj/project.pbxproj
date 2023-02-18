@@ -141,11 +141,11 @@
 		47ED3A30299532ED00AE39C3 /* Take Home Project SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				47ED3A5329954CCC00AE39C3 /* Take-Home-Project-SwiftUI-Info.plist */,
 				47ED3A44299549F900AE39C3 /* Features */,
 				47ED3A4929954A4400AE39C3 /* Base */,
 				47ED3A3F2995460C00AE39C3 /* Resources */,
 				47ED3A31299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift */,
+				47ED3A5329954CCC00AE39C3 /* Take-Home-Project-SwiftUI-Info.plist */,
 				47ED3A35299532EF00AE39C3 /* Assets.xcassets */,
 				47ED3A37299532EF00AE39C3 /* Preview Content */,
 			);

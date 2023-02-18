@@ -11,6 +11,8 @@ struct CreateView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @StateObject private var viewModel = CreateViewModel()
+    
     var body: some View {
         
         NavigationView {
@@ -33,7 +35,11 @@ struct CreateView: View {
                 ToolbarItem(placement: .primaryAction) {
                     dismissButton
                 }
-
+            }
+            .onChange(of: viewModel.submissionState) { formState in
+                if formState == .successful {
+                    dismiss()
+                }
             }
         }
     }
@@ -49,20 +55,20 @@ struct CreateView_Previews: PreviewProvider {
 private extension CreateView {
     
     var firstName: some View {
-        TextField("First name", text: .constant(""))
+        TextField("First name", text: $viewModel.newUser.firstName)
     }
     
     var lastName: some View {
-        TextField("Last name", text: .constant(""))
+        TextField("Last name", text: $viewModel.newUser.lastName)
     }
     
     var job: some View {
-        TextField("Job", text: .constant(""))
+        TextField("Job", text: $viewModel.newUser.job)
     }
     
     var submitButton: some View {
         Button("Submit") {
-            // TODO: Handle action
+            viewModel.create()
         }
     }
     

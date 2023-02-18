@@ -24,6 +24,8 @@
 		47807A152997E70100AE1163 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47807A142997E70100AE1163 /* PillView.swift */; };
 		4784B76729A101E600F96665 /* PeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4784B76629A101E500F96665 /* PeopleViewModel.swift */; };
 		47A1B40229A0A57500B0DC94 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1B40129A0A57500B0DC94 /* EndPoint.swift */; };
+		47EB3CB529A12FCA00E5DCE5 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */; };
+		47EB3CB729A1306000E5DCE5 /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */; };
 		47ED3A32299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A31299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift */; };
 		47ED3A36299532EF00AE39C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ED3A35299532EF00AE39C3 /* Assets.xcassets */; };
 		47ED3A39299532EF00AE39C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ED3A38299532EF00AE39C3 /* Preview Assets.xcassets */; };
@@ -49,6 +51,8 @@
 		47807A142997E70100AE1163 /* PillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		4784B76629A101E500F96665 /* PeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModel.swift; sourceTree = "<group>"; };
 		47A1B40129A0A57500B0DC94 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
+		47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
 		47ED3A2E299532ED00AE39C3 /* Take Home Project SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Take Home Project SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47ED3A31299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Take_Home_Project_SwiftUIApp.swift; sourceTree = "<group>"; };
 		47ED3A35299532EF00AE39C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 		47ED3A4E29954A9300AE39C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 		47ED3A4F29954A9B00AE39C3 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				47807A102997A45300AE1163 /* PeopleView.swift in Sources */,
 				47ED3A412995466400AE39C3 /* Symbols.swift in Sources */,
 				47747941299FB22B00CCB754 /* ToolbarButton.swift in Sources */,
+				47EB3CB529A12FCA00E5DCE5 /* NewUser.swift in Sources */,
 				47807A0129976E9600AE1163 /* Models.swift in Sources */,
 				476AFEA52998E98B00C4A3C7 /* BackgroundView.swift in Sources */,
 				47ED3A43299548B100AE39C3 /* Theme.swift in Sources */,
@@ -386,6 +393,7 @@
 				47807A0429976F0900AE1163 /* StaticJSONMapper.swift in Sources */,
 				47807A122997E5E300AE1163 /* PersonItemView.swift in Sources */,
 				4730271329A0994B00817BD1 /* NetworkManager.swift in Sources */,
+				47EB3CB729A1306000E5DCE5 /* CreateViewModel.swift in Sources */,
 				4784B76729A101E600F96665 /* PeopleViewModel.swift in Sources */,
 				47ED3A32299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift in Sources */,
 				476AFEA32998E6F000C4A3C7 /* UserDetailsView.swift in Sources */,

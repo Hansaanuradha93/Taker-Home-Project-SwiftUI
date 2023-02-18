@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PeopleDetailView: View {
     
+    var userId: Int
     @State var userInfo: UserDetailsResponse?
     
     var body: some View {
@@ -41,12 +42,24 @@ struct PeopleDetailView: View {
         }
         .navigationTitle("Details")
         .onAppear {
-            do {
-                let userInfo = try StaticJSONMapper.decode(file: "UserDetailsStaticData", type: UserDetailsResponse.self)
-                self.userInfo = userInfo
-            } catch (let error) {
-                // TODO: handle errors
-                print("‼️ Error: \(error)")
+//            do {
+//                let userInfo = try StaticJSONMapper.decode(file: "UserDetailsStaticData", type: UserDetailsResponse.self)
+//                self.userInfo = userInfo
+//            } catch (let error) {
+//                // TODO: handle errors
+//                print("‼️ Error: \(error)")
+//            }
+            
+            NetworkManager.shared.request(endPoint: .userDetails(id: userId), type: UserDetailsResponse.self) { result in
+                
+                switch result {
+                    
+                case .success(let response):
+                    self.userInfo = response
+                    
+                case .failure(let error):
+                    print("🔴 error: \(error)")
+                }
             }
         }
     }
@@ -61,7 +74,7 @@ struct PeopleDetailView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            PeopleDetailView(userInfo: previewUserInfo)
+            PeopleDetailView(userId: 1, userInfo: previewUserInfo)
         }
     }
 }

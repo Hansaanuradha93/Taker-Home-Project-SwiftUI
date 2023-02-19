@@ -51,7 +51,7 @@ extension NetworkManager {
             
             
             guard let data = data else {
-                completion(.failure(NetworkError.invaliData))
+                completion(.failure(NetworkError.invalidData))
                 return
             }
             
@@ -138,18 +138,6 @@ private extension NetworkManager {
     }
 }
 
-// MARK: - Error Handling
-extension NetworkManager {
-    
-    enum NetworkError: Error {
-        case invalidURL
-        case customError(error: Error)
-        case invalidStatusCode(statusCode: Int)
-        case invaliData
-        case faildToDecode(error: Error)
-    }
-}
-
 // MARK: - HTTP Methods
 extension NetworkManager {
     
@@ -161,3 +149,33 @@ extension NetworkManager {
     }
 }
 
+// MARK: - Error Types
+extension NetworkManager {
+    
+    enum NetworkError: LocalizedError {
+        case invalidURL
+        case customError(error: Error)
+        case invalidStatusCode(statusCode: Int)
+        case invalidData
+        case faildToDecode(error: Error)
+    }
+}
+
+// MARK: - Error Descriptions
+extension NetworkManager.NetworkError {
+    
+    var errorDescription: String? {
+        switch self {
+        case .invalidURL:
+            return "URL isn't valid"
+        case .customError(error: let error):
+            return "Something went wronf \(error.localizedDescription)"
+        case .invalidStatusCode(statusCode: let statusCode):
+            return "Status code: \(statusCode) falls in to the wrong range"
+        case .invalidData:
+            return "Response data is invalid"
+        case .faildToDecode(error: let error):
+            return "Failed to decode: \(error.localizedDescription)"
+        }
+    }
+}

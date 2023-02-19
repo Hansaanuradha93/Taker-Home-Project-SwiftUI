@@ -30,7 +30,6 @@ struct PeopleView: View {
                             } label: {
                                 PersonItemView(user: user)
                             }
-
                         }
                     }
                     .padding()
@@ -40,16 +39,18 @@ struct PeopleView: View {
             .navigationTitle("People")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    
                     createButton
                 }
             }
             .onAppear {
-                
                 viewModel.fetchUsers()
             }
             .sheet(isPresented: $shouldShowCreate) {
                 CreateView()
+            }
+            .alert(isPresented: $viewModel.hasError,
+                   error: viewModel.error) {
+                retryButton
             }
         }
     }
@@ -68,6 +69,12 @@ private extension PeopleView {
         
         ToolbarButton(image: Symbols.plus) {
             shouldShowCreate.toggle()
+        }
+    }
+    
+    var retryButton: some View {
+        Button("Retry") {
+            viewModel.fetchUsers()
         }
     }
 }

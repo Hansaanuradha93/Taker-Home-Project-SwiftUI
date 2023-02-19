@@ -10,6 +10,8 @@ import Foundation
 final class PeopleViewModel: ObservableObject {
     
     @Published private(set) var users: [User] = []
+    @Published private(set) var error: NetworkManager.NetworkError?
+    @Published var hasError: Bool = false
     
     func fetchUsers(onPage page: Int = 1) {
         
@@ -24,6 +26,8 @@ final class PeopleViewModel: ObservableObject {
                     
                 case .failure(let error):
                     print("🔴 error: \(error)")
+                    self?.hasError = true
+                    self?.error = error as? NetworkManager.NetworkError
                 }
             }
         }

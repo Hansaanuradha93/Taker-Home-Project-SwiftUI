@@ -25,7 +25,7 @@ final class UserDetailsViewModel: ObservableObject {
                     self?.userInfo = response
                     
                 case .failure(let error):
-                    print("🔴 error: \(error)")
+                    LogManager.shared.log(withType: .error(error: error))
                     self?.hasError = true
                     self?.error = error as? NetworkManager.NetworkError
                 }

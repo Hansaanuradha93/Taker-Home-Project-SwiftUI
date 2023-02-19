@@ -26,11 +26,11 @@ final class CreateViewModel: ObservableObject {
                 switch result {
                     
                 case .success():
-                    print("🟢 New user created")
+                    LogManager.shared.log(message: "New user created", withType: .info)
                     self?.submissionState = .successful
                     
                 case .failure(let error):
-                    print("🔴 \(error.localizedDescription)")
+                    LogManager.shared.log(withType: .error(error: error))
                     self?.hasError = true
                     self?.submissionState = .unsuccessful
                     self?.error = error as? NetworkManager.NetworkError

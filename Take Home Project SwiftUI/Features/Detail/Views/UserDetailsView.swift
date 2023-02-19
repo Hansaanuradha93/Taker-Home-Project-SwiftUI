@@ -43,8 +43,11 @@ struct UserDetailsView: View {
         }
         .navigationTitle("Details")
         .onAppear {
-            
             viewModel.fetchUserDetails(for: userId)
+        }
+        .alert(isPresented: $viewModel.hasError,
+               error: viewModel.error) {
+            retryButton
         }
     }
 }
@@ -59,6 +62,16 @@ struct PeopleDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             UserDetailsView(userId: previewUserId)
+        }
+    }
+}
+
+// MARK: - UserDetailsView
+private extension UserDetailsView {
+    
+    var retryButton: some View {
+        Button("Retry") {
+            viewModel.fetchUserDetails(for: userId)
         }
     }
 }

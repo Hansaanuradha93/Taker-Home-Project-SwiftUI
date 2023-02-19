@@ -10,6 +10,8 @@ import Foundation
 final class UserDetailsViewModel: ObservableObject {
     
     @Published private(set) var userInfo: UserDetailsResponse?
+    @Published private(set) var error: NetworkManager.NetworkError?
+    @Published var hasError: Bool = false
     
     func fetchUserDetails(for userId: Int) {
         
@@ -24,6 +26,8 @@ final class UserDetailsViewModel: ObservableObject {
                     
                 case .failure(let error):
                     print("🔴 error: \(error)")
+                    self?.hasError = true
+                    self?.error = error as? NetworkManager.NetworkError
                 }
             }
         }

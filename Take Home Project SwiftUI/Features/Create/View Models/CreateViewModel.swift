@@ -13,8 +13,11 @@ final class CreateViewModel: ObservableObject {
     @Published private(set) var submissionState: SubmissionState?
     @Published private(set) var error: NetworkManager.NetworkError?
     @Published var hasError: Bool = false
+    @Published private(set) var isLoading: Bool = false
     
     func create() {
+        
+        isLoading = true
         
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
@@ -23,6 +26,9 @@ final class CreateViewModel: ObservableObject {
         NetworkManager.shared.request(endPoint: .createUser(delay: 0), httpMethod: .POST(data: data)) { [weak self] result in
             
             DispatchQueue.main.async {
+                
+                defer { self?.isLoading = false }
+
                 switch result {
                     
                 case .success():

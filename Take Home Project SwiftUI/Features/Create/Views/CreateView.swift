@@ -32,7 +32,10 @@ struct CreateView: View {
                         
                         submitButton
                     }
-                    
+                }
+                
+                if viewModel.isLoading {
+                    ProgressView()
                 }
             }
             .navigationTitle("Create")
@@ -79,12 +82,14 @@ private extension CreateView {
         Button("Submit") {
             viewModel.create()
         }
+        .disabled(viewModel.isLoading)
     }
     
     var dismissButton: some View {
         ToolbarButton(title: "Dismiss") {
             dismiss()
         }
+        .disabled(viewModel.isLoading)
     }
     
     var retryButton: some View {

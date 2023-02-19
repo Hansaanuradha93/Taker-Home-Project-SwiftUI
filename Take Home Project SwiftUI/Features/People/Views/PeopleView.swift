@@ -73,6 +73,7 @@ private extension PeopleView {
         ToolbarButton(image: Symbols.plus) {
             shouldShowCreate.toggle()
         }
+        .disabled(viewModel.isLoading)
     }
     
     var retryButton: some View {

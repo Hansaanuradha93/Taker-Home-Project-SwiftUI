@@ -20,7 +20,7 @@ final class CreateViewModel: ObservableObject {
         encoder.keyEncodingStrategy = .convertToSnakeCase
         let data = try? encoder.encode(newUser)
         
-        NetworkManager.shared.request(endPoint: .createUser, httpMethod: .POST(data: data)) { [weak self] result in
+        NetworkManager.shared.request(endPoint: .createUser(delay: 0), httpMethod: .POST(data: data)) { [weak self] result in
             
             DispatchQueue.main.async {
                 switch result {

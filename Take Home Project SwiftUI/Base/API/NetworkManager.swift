@@ -32,6 +32,8 @@ extension NetworkManager {
             completion(.failure(NetworkError.invalidURL))
             return
         }
+        
+        LogManager.shared.log(message: url.absoluteString, withType: .info)
 
         let urlRequest = buildRequest(from: url, methodType: httpMethod)
                 

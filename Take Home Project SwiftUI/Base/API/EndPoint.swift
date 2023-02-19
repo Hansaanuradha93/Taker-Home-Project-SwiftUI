@@ -9,25 +9,22 @@ import Foundation
 
 // MARK: Cases
 enum EndPoint {
-    case users(page: Int)
-    case userDetails(id: Int)
-    case createUser
-    case updateUser(id: Int)
-    case deleteUser(id: Int)
+    case users(page: Int, delay: Int = 0)
+    case userDetails(id: Int, delay: Int = 0)
+    case createUser(delay: Int = 0)
+    case updateUser(id: Int, delay: Int = 0)
+    case deleteUser(id: Int, delay: Int = 0)
 }
-
 
 // MARK: - Scheme
 extension EndPoint {
     private var scheme: String { return "https" }
 }
 
-
 // MARK: - Host
 extension EndPoint {
     private var host: String { return "reqres.in" }
 }
-
 
 // MARK: - Path
 extension EndPoint {
@@ -36,38 +33,39 @@ extension EndPoint {
         switch self {
         case .users:
             return "/api/users"
-        case .userDetails(let id):
+        case .userDetails(let id, _):
             return "/api/users/\(id)"
         case .createUser:
             return "/api/users"
-        case .updateUser(let id):
+        case .updateUser(let id, _):
             return "/api/users/\(id)"
-        case .deleteUser(let id):
+        case .deleteUser(let id, _):
             return "/api/users/\(id)"
         }
     }
 }
-
 
 // MARK: - Parameters
 extension EndPoint {
     
     private var parameters: [String : Any] {
         switch self {
-        case .users(let page):
-            return ["page": "\(page)"]
-        case .userDetails:
-            return ["": ""]
-        case .createUser:
-            return ["": ""]
-        case .updateUser:
-            return ["": ""]
-        case .deleteUser:
-            return ["": ""]
+        case .users(let page, let delay):
+            return [
+                "page": "\(page)",
+                "delay": "\(delay)"
+            ]
+        case .userDetails(_, let delay):
+            return ["delay": "\(delay)"]
+        case .createUser(let delay):
+            return ["delay": "\(delay)"]
+        case .updateUser(_, let delay):
+            return ["delay": "\(delay)"]
+        case .deleteUser(_, let delay):
+            return ["delay": "\(delay)"]
         }
     }
 }
-
 
 // MARK: - Query Components
 extension EndPoint {
@@ -83,7 +81,6 @@ extension EndPoint {
         return components
     }
 }
-
 
 // MARK: - Url
 extension EndPoint {

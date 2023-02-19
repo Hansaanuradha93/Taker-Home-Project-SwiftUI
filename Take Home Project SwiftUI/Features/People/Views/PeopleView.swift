@@ -20,21 +20,24 @@ struct PeopleView: View {
                 
                 BackgroundView()
                 
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        
-                        ForEach(viewModel.users, id: \.id) { user in
+                if viewModel.isLoading {
+                    ProgressView()
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 16) {
                             
-                            NavigationLink {
-                                UserDetailsView(userId: user.id)
-                            } label: {
-                                PersonItemView(user: user)
+                            ForEach(viewModel.users, id: \.id) { user in
+                                
+                                NavigationLink {
+                                    UserDetailsView(userId: user.id)
+                                } label: {
+                                    PersonItemView(user: user)
+                                }
                             }
                         }
+                        .padding()
                     }
-                    .padding()
                 }
-                
             }
             .navigationTitle("People")
             .toolbar {

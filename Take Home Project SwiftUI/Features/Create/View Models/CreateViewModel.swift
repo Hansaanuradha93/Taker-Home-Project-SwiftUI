@@ -13,11 +13,9 @@ final class CreateViewModel: ObservableObject {
     @Published private(set) var submissionState: SubmissionState?
     @Published private(set) var error: NetworkManager.NetworkError?
     @Published var hasError: Bool = false
-    @Published private(set) var isLoading: Bool = false
     
     func create() {
-        
-        isLoading = true
+        submissionState = .submitting
         
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
@@ -27,8 +25,6 @@ final class CreateViewModel: ObservableObject {
             
             DispatchQueue.main.async {
                 
-                defer { self?.isLoading = false }
-
                 switch result {
                     
                 case .success():
@@ -37,8 +33,8 @@ final class CreateViewModel: ObservableObject {
                     
                 case .failure(let error):
                     LogManager.shared.log(withType: .error(error: error))
-                    self?.hasError = true
                     self?.submissionState = .unsuccessful
+                    self?.hasError = true
                     self?.error = error as? NetworkManager.NetworkError
                 }
             }
@@ -52,5 +48,6 @@ extension CreateViewModel {
     enum SubmissionState {
         case successful
         case unsuccessful
+        case submitting
     }
 }

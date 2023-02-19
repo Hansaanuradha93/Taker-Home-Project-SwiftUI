@@ -33,10 +33,8 @@ struct CreateView: View {
                         submitButton
                     }
                 }
+                .disabled(viewModel.submissionState == .submitting)
                 
-                if viewModel.isLoading {
-                    ProgressView()
-                }
             }
             .navigationTitle("Create")
             .toolbar {
@@ -52,6 +50,11 @@ struct CreateView: View {
             .alert(isPresented: $viewModel.hasError,
                     error: viewModel.error) {
                 retryButton
+            }
+            .overlay {
+                if viewModel.submissionState == .submitting {
+                    ProgressView()
+                }
             }
         }
     }
@@ -82,14 +85,12 @@ private extension CreateView {
         Button("Submit") {
             viewModel.create()
         }
-        .disabled(viewModel.isLoading)
     }
     
     var dismissButton: some View {
         ToolbarButton(title: "Dismiss") {
             dismiss()
         }
-        .disabled(viewModel.isLoading)
     }
     
     var retryButton: some View {

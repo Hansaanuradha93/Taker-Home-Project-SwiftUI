@@ -18,28 +18,32 @@ struct UserDetailsView: View {
         ZStack {
             BackgroundView()
             
-            ScrollView {
-                
-                VStack(alignment: .leading, spacing: 18) {
+            if viewModel.isLoading {
+                ProgressView()
+            } else {
+                ScrollView {
                     
-                    PersonAvatarImageView(userInfo: viewModel.userInfo)
-                    
-                    Group {
-                        // Detail
-                        PersonDetialFormView(user: viewModel.userInfo?.data)
+                    VStack(alignment: .leading, spacing: 18) {
                         
-                        // Support URL
-                        LinkView(userInfo: viewModel.userInfo)
+                        PersonAvatarImageView(userInfo: viewModel.userInfo)
+                        
+                        Group {
+                            // Detail
+                            PersonDetialFormView(user: viewModel.userInfo?.data)
+                            
+                            // Support URL
+                            LinkView(userInfo: viewModel.userInfo)
+                            
+                        }
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 10)
+                        .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
                         
                     }
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 10)
-                    .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    
+                    .padding()
                 }
-                .padding()
-                
             }
+            
         }
         .navigationTitle("Details")
         .onAppear {

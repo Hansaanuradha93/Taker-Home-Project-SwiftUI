@@ -73,8 +73,6 @@ private extension PeopleView {
     }
     
     var retryButton: some View {
-        Button("Retry") {
-            viewModel.fetchUsers()
-        }
+        Button("Retry") {}
     }
 }

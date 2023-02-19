@@ -70,9 +70,7 @@ struct PeopleDetailView_Previews: PreviewProvider {
 private extension UserDetailsView {
     
     var retryButton: some View {
-        Button("Retry") {
-            viewModel.fetchUserDetails(for: userId)
-        }
+        Button("Retry") {}
     }
 }
 

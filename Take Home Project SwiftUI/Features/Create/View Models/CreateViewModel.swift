@@ -11,6 +11,8 @@ final class CreateViewModel: ObservableObject {
     
     @Published var newUser = NewUser()
     @Published private(set) var submissionState: SubmissionState?
+    @Published private(set) var error: NetworkManager.NetworkError?
+    @Published var hasError: Bool = false
     
     func create() {
         
@@ -29,7 +31,9 @@ final class CreateViewModel: ObservableObject {
                     
                 case .failure(let error):
                     print("🔴 \(error.localizedDescription)")
+                    self?.hasError = true
                     self?.submissionState = .unsuccessful
+                    self?.error = error as? NetworkManager.NetworkError
                 }
             }
         }

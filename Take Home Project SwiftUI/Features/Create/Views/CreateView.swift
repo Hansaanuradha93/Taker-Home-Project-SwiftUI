@@ -41,6 +41,10 @@ struct CreateView: View {
                     dismiss()
                 }
             }
+            .alert(isPresented: $viewModel.hasError,
+                   error: viewModel.error) {
+                retryButton
+            }
         }
     }
 }
@@ -73,10 +77,13 @@ private extension CreateView {
     }
     
     var dismissButton: some View {
-        
         ToolbarButton(title: "Dismiss") {
             dismiss()
         }
+    }
+    
+    var retryButton: some View {
+        Button("Retry") {}
     }
 }
 

@@ -169,7 +169,7 @@ extension NetworkManager.NetworkError {
         case .invalidURL:
             return "URL isn't valid"
         case .customError(error: let error):
-            return "Something went wronf \(error.localizedDescription)"
+            return "Something went wrong: \(error.localizedDescription)"
         case .invalidStatusCode(statusCode: let statusCode):
             return "Status code: \(statusCode) falls in to the wrong range"
         case .invalidData:

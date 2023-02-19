@@ -13,6 +13,7 @@ struct PeopleView: View {
     
     @StateObject private var viewModel = PeopleViewModel()
     @State private var shouldShowCreate = false
+    @State private var shouldShowSuccess: Bool = false
     
     var body: some View {
         NavigationView {
@@ -49,11 +50,28 @@ struct PeopleView: View {
                 viewModel.fetchUsers()
             }
             .sheet(isPresented: $shouldShowCreate) {
-                CreateView()
+                CreateView {
+                    withAnimation(.spring().delay(0.25)) {
+                        self.shouldShowSuccess.toggle()
+                    }
+                }
             }
             .alert(isPresented: $viewModel.hasError,
                    error: viewModel.error) {
                 retryButton
+            }
+            .overlay {
+                if shouldShowSuccess {
+                    CheckmarkPopoverView()
+                        .transition(.scale.combined(with: .opacity))
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                withAnimation(.spring()) {
+                                    self.shouldShowSuccess.toggle()
+                                }
+                            }
+                        }
+                }
             }
         }
     }

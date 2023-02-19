@@ -56,7 +56,7 @@ struct UserDetailsView: View {
     }
 }
 
-struct PeopleDetailView_Previews: PreviewProvider {
+struct UserDetailsView_Previews: PreviewProvider {
     
     static var previewUserId: Int {
         let userInfo = try! StaticJSONMapper.decode(file: "UserDetailsStaticData", type: UserDetailsResponse.self)

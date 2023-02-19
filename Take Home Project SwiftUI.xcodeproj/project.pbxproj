@@ -10,6 +10,7 @@
 		4703B96829A121B400B6CA78 /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4703B96729A121B400B6CA78 /* UserDetailsViewModel.swift */; };
 		4730271329A0994B00817BD1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730271229A0994B00817BD1 /* NetworkManager.swift */; };
 		473DA45929A224CA00DFFE04 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DA45829A224CA00DFFE04 /* LogManager.swift */; };
+		473DA45B29A25A7700DFFE04 /* CheckmarkPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DA45A29A25A7700DFFE04 /* CheckmarkPopoverView.swift */; };
 		476AFEA32998E6F000C4A3C7 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFEA22998E6F000C4A3C7 /* UserDetailsView.swift */; };
 		476AFEA52998E98B00C4A3C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFEA42998E98B00C4A3C7 /* BackgroundView.swift */; };
 		4774793F299FA86500CCB754 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4774793E299FA86500CCB754 /* CreateView.swift */; };
@@ -38,6 +39,7 @@
 		4703B96729A121B400B6CA78 /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
 		4730271229A0994B00817BD1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		473DA45829A224CA00DFFE04 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		473DA45A29A25A7700DFFE04 /* CheckmarkPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkPopoverView.swift; sourceTree = "<group>"; };
 		476AFEA22998E6F000C4A3C7 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		476AFEA42998E98B00C4A3C7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		4774793E299FA86500CCB754 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				476AFEA42998E98B00C4A3C7 /* BackgroundView.swift */,
 				47807A142997E70100AE1163 /* PillView.swift */,
 				47747940299FB22B00CCB754 /* ToolbarButton.swift */,
+				473DA45A29A25A7700DFFE04 /* CheckmarkPopoverView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			files = (
 				478079FA29976D0100AE1163 /* UserDetailsResponse.swift in Sources */,
 				47807A152997E70100AE1163 /* PillView.swift in Sources */,
+				473DA45B29A25A7700DFFE04 /* CheckmarkPopoverView.swift in Sources */,
 				4703B96829A121B400B6CA78 /* UserDetailsViewModel.swift in Sources */,
 				478079FC29976D7E00AE1163 /* UsersResponse.swift in Sources */,
 				473DA45929A224CA00DFFE04 /* LogManager.swift in Sources */,

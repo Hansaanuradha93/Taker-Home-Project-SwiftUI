@@ -16,19 +16,24 @@ struct CreateView: View {
     var body: some View {
         
         NavigationView {
-            Form {
+            
+            ZStack {
+                BackgroundView()
                 
-                firstName
-                
-                lastName
-                
-                job
-
-                Section {
+                Form {
                     
-                    submitButton
+                    firstName
+                    
+                    lastName
+                    
+                    job
+
+                    Section {
+                        
+                        submitButton
+                    }
+                    
                 }
-                
             }
             .navigationTitle("Create")
             .toolbar {
@@ -42,7 +47,7 @@ struct CreateView: View {
                 }
             }
             .alert(isPresented: $viewModel.hasError,
-                   error: viewModel.error) {
+                    error: viewModel.error) {
                 retryButton
             }
         }

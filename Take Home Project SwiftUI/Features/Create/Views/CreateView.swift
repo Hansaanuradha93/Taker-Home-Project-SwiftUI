@@ -24,11 +24,20 @@ struct CreateView: View {
                 
                 Form {
                     
-                    firstName
-                    
-                    lastName
-                    
-                    job
+                    Section {
+                        firstName
+                        
+                        lastName
+                        
+                        job
+                    } footer: {
+                            
+                        if case .validation(let err) = viewModel.error,
+                           let errorDesc = err.errorDescription {
+                            Text(errorDesc)
+                                .backgroundStyle(.red)
+                        }
+                    }
 
                     Section {
                         

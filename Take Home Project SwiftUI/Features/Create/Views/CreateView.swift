@@ -11,6 +11,8 @@ struct CreateView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @FocusState private var focusedField: Field?
+    
     @StateObject private var viewModel = CreateViewModel()
     
     let successfulAction: () -> Void
@@ -83,18 +85,22 @@ private extension CreateView {
     
     var firstName: some View {
         TextField("First name", text: $viewModel.newUser.firstName)
+            .focused($focusedField, equals: .firstName)
     }
     
     var lastName: some View {
         TextField("Last name", text: $viewModel.newUser.lastName)
+            .focused($focusedField, equals: .lastName)
     }
     
     var job: some View {
         TextField("Job", text: $viewModel.newUser.job)
+            .focused($focusedField, equals: .job)
     }
     
     var submitButton: some View {
         Button("Submit") {
+            focusedField = nil
             viewModel.create()
         }
     }
@@ -107,6 +113,15 @@ private extension CreateView {
     
     var okButton: some View {
         Button("OK") {}
+    }
+}
+
+// MARK: - TextField Types
+extension CreateView {
+    enum Field: Hashable {
+        case firstName
+        case lastName
+        case job
     }
 }
 

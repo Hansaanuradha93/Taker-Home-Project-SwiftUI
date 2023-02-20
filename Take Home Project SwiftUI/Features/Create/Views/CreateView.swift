@@ -52,7 +52,7 @@ struct CreateView: View {
             }
             .alert(isPresented: $viewModel.hasError,
                     error: viewModel.error) {
-                retryButton
+                okButton
             }
             .overlay {
                 if viewModel.submissionState == .submitting {
@@ -96,8 +96,8 @@ private extension CreateView {
         }
     }
     
-    var retryButton: some View {
-        Button("Retry") {}
+    var okButton: some View {
+        Button("OK") {}
     }
 }
 

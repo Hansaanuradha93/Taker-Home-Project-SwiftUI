@@ -58,7 +58,7 @@ struct PeopleView: View {
             }
             .alert(isPresented: $viewModel.hasError,
                    error: viewModel.error) {
-                retryButton
+                okButton
             }
             .overlay {
                 if shouldShowSuccess {
@@ -94,7 +94,7 @@ private extension PeopleView {
         .disabled(viewModel.isLoading)
     }
     
-    var retryButton: some View {
-        Button("Retry") {}
+    var okButton: some View {
+        Button("OK") {}
     }
 }

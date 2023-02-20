@@ -25,6 +25,7 @@
 		47807A122997E5E300AE1163 /* PersonItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47807A112997E5E300AE1163 /* PersonItemView.swift */; };
 		47807A152997E70100AE1163 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47807A142997E70100AE1163 /* PillView.swift */; };
 		4784B76729A101E600F96665 /* PeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4784B76629A101E500F96665 /* PeopleViewModel.swift */; };
+		4792244F29A3D430006AE4FD /* CreateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4792244E29A3D430006AE4FD /* CreateValidator.swift */; };
 		47A1B40229A0A57500B0DC94 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1B40129A0A57500B0DC94 /* EndPoint.swift */; };
 		47EB3CB529A12FCA00E5DCE5 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */; };
 		47EB3CB729A1306000E5DCE5 /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */; };
@@ -54,6 +55,7 @@
 		47807A112997E5E300AE1163 /* PersonItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonItemView.swift; sourceTree = "<group>"; };
 		47807A142997E70100AE1163 /* PillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		4784B76629A101E500F96665 /* PeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModel.swift; sourceTree = "<group>"; };
+		4792244E29A3D430006AE4FD /* CreateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateValidator.swift; sourceTree = "<group>"; };
 		47A1B40129A0A57500B0DC94 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
@@ -139,6 +141,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		4792244D29A3D41A006AE4FD /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				4792244E29A3D430006AE4FD /* CreateValidator.swift */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
 		47ED3A25299532ED00AE39C3 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +220,7 @@
 		47ED3A4629954A1D00AE39C3 /* Create */ = {
 			isa = PBXGroup;
 			children = (
+				4792244D29A3D41A006AE4FD /* Validator */,
 				47ED3A4E29954A9300AE39C3 /* Model */,
 				47ED3A4D29954A8600AE39C3 /* Views */,
 				47ED3A4F29954A9B00AE39C3 /* View Models */,
@@ -399,6 +410,7 @@
 				473DA45929A224CA00DFFE04 /* LogManager.swift in Sources */,
 				47807A102997A45300AE1163 /* PeopleView.swift in Sources */,
 				47ED3A412995466400AE39C3 /* Symbols.swift in Sources */,
+				4792244F29A3D430006AE4FD /* CreateValidator.swift in Sources */,
 				47747941299FB22B00CCB754 /* ToolbarButton.swift in Sources */,
 				47EB3CB529A12FCA00E5DCE5 /* NewUser.swift in Sources */,
 				47807A0129976E9600AE1163 /* Models.swift in Sources */,

@@ -51,7 +51,7 @@ struct UserDetailsView: View {
         }
         .alert(isPresented: $viewModel.hasError,
                error: viewModel.error) {
-            retryButton
+            okButton
         }
     }
 }
@@ -73,8 +73,8 @@ struct UserDetailsView_Previews: PreviewProvider {
 // MARK: - UserDetailsView
 private extension UserDetailsView {
     
-    var retryButton: some View {
-        Button("Retry") {}
+    var okButton: some View {
+        Button("OK") {}
     }
 }
 

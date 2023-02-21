@@ -27,6 +27,7 @@
 		4784B76729A101E600F96665 /* PeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4784B76629A101E500F96665 /* PeopleViewModel.swift */; };
 		4792244F29A3D430006AE4FD /* CreateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4792244E29A3D430006AE4FD /* CreateValidator.swift */; };
 		47A1B40229A0A57500B0DC94 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1B40129A0A57500B0DC94 /* EndPoint.swift */; };
+		47A8057C29A51E4D00BAC03B /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8057B29A51E4D00BAC03B /* HapticManager.swift */; };
 		47EB3CB529A12FCA00E5DCE5 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */; };
 		47EB3CB729A1306000E5DCE5 /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */; };
 		47ED3A32299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A31299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift */; };
@@ -57,6 +58,7 @@
 		4784B76629A101E500F96665 /* PeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModel.swift; sourceTree = "<group>"; };
 		4792244E29A3D430006AE4FD /* CreateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateValidator.swift; sourceTree = "<group>"; };
 		47A1B40129A0A57500B0DC94 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		47A8057B29A51E4D00BAC03B /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
 		47ED3A2E299532ED00AE39C3 /* Take Home Project SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Take Home Project SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,14 @@
 				4792244E29A3D430006AE4FD /* CreateValidator.swift */,
 			);
 			path = Validator;
+			sourceTree = "<group>";
+		};
+		47A8057A29A51E4100BAC03B /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				47A8057B29A51E4D00BAC03B /* HapticManager.swift */,
+			);
+			path = Haptics;
 			sourceTree = "<group>";
 		};
 		47ED3A25299532ED00AE39C3 = {
@@ -248,6 +258,7 @@
 		47ED3A4929954A4400AE39C3 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				47A8057A29A51E4100BAC03B /* Haptics */,
 				473DA45729A224A900DFFE04 /* Log */,
 				4730271129A0993B00817BD1 /* API */,
 				47807A132997E6E800AE1163 /* Views */,
@@ -412,6 +423,7 @@
 				47ED3A412995466400AE39C3 /* Symbols.swift in Sources */,
 				4792244F29A3D430006AE4FD /* CreateValidator.swift in Sources */,
 				47747941299FB22B00CCB754 /* ToolbarButton.swift in Sources */,
+				47A8057C29A51E4D00BAC03B /* HapticManager.swift in Sources */,
 				47EB3CB529A12FCA00E5DCE5 /* NewUser.swift in Sources */,
 				47807A0129976E9600AE1163 /* Models.swift in Sources */,
 				476AFEA52998E98B00C4A3C7 /* BackgroundView.swift in Sources */,

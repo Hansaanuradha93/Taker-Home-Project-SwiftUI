@@ -95,9 +95,8 @@ extension EndPoint {
     var methodType: MethodType {
         switch self {
             
-        case .users:
-            return .GET
-        case .userDetails:
+        case .users,
+             .userDetails:
             return .GET
         case .createUser(let data):
             return .POST(data: data)

@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: Cases
 enum EndPoint {
-    case users(page: Int, delay: Int = 0)
-    case userDetails(id: Int, delay: Int = 0)
+    case users(page: Int)
+    case userDetails(id: Int)
     case createUser(delay: Int = 0)
-    case updateUser(id: Int, delay: Int = 0)
-    case deleteUser(id: Int, delay: Int = 0)
+    case updateUser(id: Int)
+    case deleteUser(id: Int)
 }
 
 // MARK: - Scheme
@@ -33,13 +33,13 @@ extension EndPoint {
         switch self {
         case .users:
             return "/api/users"
-        case .userDetails(let id, _):
+        case .userDetails(let id):
             return "/api/users/\(id)"
         case .createUser:
             return "/api/users"
-        case .updateUser(let id, _):
+        case .updateUser(let id):
             return "/api/users/\(id)"
-        case .deleteUser(let id, _):
+        case .deleteUser(let id):
             return "/api/users/\(id)"
         }
     }
@@ -48,21 +48,15 @@ extension EndPoint {
 // MARK: - Parameters
 extension EndPoint {
     
-    private var parameters: [String : Any] {
+    private var parameters: [String : Any]? {
         switch self {
-        case .users(let page, let delay):
-            return [
-                "page": "\(page)",
-                "delay": "\(delay)"
-            ]
-        case .userDetails(_, let delay):
-            return ["delay": "\(delay)"]
-        case .createUser(let delay):
-            return ["delay": "\(delay)"]
-        case .updateUser(_, let delay):
-            return ["delay": "\(delay)"]
-        case .deleteUser(_, let delay):
-            return ["delay": "\(delay)"]
+        case .users(let page):
+            return ["page": "\(page)"]
+        case .userDetails,
+             .createUser,
+             .updateUser,
+             .deleteUser:
+            return nil
         }
     }
 }
@@ -72,6 +66,8 @@ extension EndPoint {
     
     private var queryComponents: [URLQueryItem] {
         var components = [URLQueryItem]()
+        
+        guard let parameters = parameters else { return components }
         
         for(key, value) in parameters {
             let queryItem = URLQueryItem(name: key, value: "\(value)")
@@ -91,6 +87,13 @@ extension EndPoint {
         components.host = host
         components.path = path
         components.queryItems = queryComponents
+        
+        #if DEBUG
+        components.queryItems?.append(
+            URLQueryItem(name: "delay", value: "1")
+        )
+        #endif
+        
         return components.url
     }
 }

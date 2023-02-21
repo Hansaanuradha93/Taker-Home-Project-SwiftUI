@@ -11,9 +11,20 @@ import Foundation
 enum EndPoint {
     case users(page: Int)
     case userDetails(id: Int)
-    case createUser(delay: Int = 0)
-    case updateUser(id: Int)
+    case createUser(data: Data?)
+    case updateUser(id: Int, data: Data?)
     case deleteUser(id: Int)
+}
+
+// MARK: - HTTP Methods
+extension EndPoint {
+    
+    enum MethodType {
+        case GET
+        case POST(data: Data?)
+        case PUT(data: Data?)
+        case DELETE
+    }
 }
 
 // MARK: - Scheme
@@ -37,7 +48,7 @@ extension EndPoint {
             return "/api/users/\(id)"
         case .createUser:
             return "/api/users"
-        case .updateUser(let id):
+        case .updateUser(let id, _):
             return "/api/users/\(id)"
         case .deleteUser(let id):
             return "/api/users/\(id)"
@@ -75,6 +86,26 @@ extension EndPoint {
         }
         
         return components
+    }
+}
+
+// MARK: - Http Method Type
+extension EndPoint {
+    
+    var methodType: MethodType {
+        switch self {
+            
+        case .users:
+            return .GET
+        case .userDetails:
+            return .GET
+        case .createUser(let data):
+            return .POST(data: data)
+        case .updateUser(_, let data):
+            return .PUT(data: data)
+        case .deleteUser:
+            return .DELETE
+        }
     }
 }
 

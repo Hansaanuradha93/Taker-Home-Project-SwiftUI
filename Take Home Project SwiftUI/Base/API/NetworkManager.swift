@@ -24,7 +24,6 @@ extension NetworkManager {
     ///   - type: Response decoding type
     ///   - completion: Returns decoded json data or error
     func request<T: Codable>(endPoint: EndPoint,
-                             httpMethod: HttpMethod = .GET,
                              type: T.Type,
                              completion: @escaping (Result<T, Error>) -> Void) {
         
@@ -35,7 +34,7 @@ extension NetworkManager {
         
         LogManager.shared.log(message: url.absoluteString, withType: .info)
 
-        let urlRequest = buildRequest(from: url, methodType: httpMethod)
+        let urlRequest = buildRequest(from: url, methodType: endPoint.methodType)
                 
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             
@@ -79,7 +78,6 @@ extension NetworkManager {
     ///   - httpMethod: Http method type
     ///   - completion: Returns status or error
     func request(endPoint: EndPoint,
-                 httpMethod: HttpMethod = .GET,
                  completion: @escaping (Result<Void, Error>) -> Void) {
         
         guard let url = endPoint.url else {
@@ -87,7 +85,7 @@ extension NetworkManager {
             return
         }
 
-        let urlRequest = buildRequest(from: url, methodType: httpMethod)
+        let urlRequest = buildRequest(from: url, methodType: endPoint.methodType)
                 
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             
@@ -119,7 +117,7 @@ private extension NetworkManager {
     ///   - methodType: Http method type
     /// - Returns: URLObject with http methods, and http body
     func buildRequest(from url: URL,
-                      methodType: HttpMethod) -> URLRequest {
+                      methodType: EndPoint.MethodType) -> URLRequest {
         
         var request = URLRequest(url: url)
         
@@ -137,17 +135,6 @@ private extension NetworkManager {
         }
         
         return request
-    }
-}
-
-// MARK: - HTTP Methods
-extension NetworkManager {
-    
-    enum HttpMethod {
-        case GET
-        case POST(data: Data?)
-        case PUT(data: Data?)
-        case DELETE
     }
 }
 

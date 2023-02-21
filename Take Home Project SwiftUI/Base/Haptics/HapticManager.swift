@@ -26,5 +26,8 @@ extension HapticManager {
 }
 
 func haptic(_ notification: UINotificationFeedbackGenerator.FeedbackType) {
-    HapticManager.shared.trigger(notification)
+    
+    if UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticsEnabled) {
+        HapticManager.shared.trigger(notification)
+    }
 }

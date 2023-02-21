@@ -17,6 +17,12 @@ struct Take_Home_Project_SwiftUIApp: App {
                         Symbols.person
                         Text("Home")
                     }
+                
+                SettingsView()
+                    .tabItem {
+                        Symbols.gear
+                        Text("Settings")
+                    }
             }
         }
     }

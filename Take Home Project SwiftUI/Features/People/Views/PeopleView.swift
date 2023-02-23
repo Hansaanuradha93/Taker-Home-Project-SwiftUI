@@ -46,8 +46,8 @@ struct PeopleView: View {
                     createButton
                 }
             }
-            .onAppear {
-                viewModel.fetchUsers()
+            .task {
+                await viewModel.fetchUsersAsync()
             }
             .sheet(isPresented: $shouldShowCreate) {
                 CreateView {
@@ -59,7 +59,7 @@ struct PeopleView: View {
             }
             .alert(isPresented: $viewModel.hasError,
                    error: viewModel.error) {
-                okButton
+                retryButton
             }
             .overlay {
                 if shouldShowSuccess {
@@ -95,7 +95,11 @@ private extension PeopleView {
         .disabled(viewModel.isLoading)
     }
     
-    var okButton: some View {
-        Button("OK") {}
+    var retryButton: some View {
+        Button("Retry") {
+            Task {
+                await viewModel.fetchUsersAsync()
+            }
+        }
     }
 }

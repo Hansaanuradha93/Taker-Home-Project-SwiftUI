@@ -14,6 +14,8 @@ final class PeopleViewModel: ObservableObject {
     @Published var hasError: Bool = false
     @Published private(set) var isLoading: Bool = false
     
+    /// Fetch users
+    /// - Parameter page: users on page
     func fetchUsers(onPage page: Int = 1) {
         
         isLoading = true
@@ -35,6 +37,31 @@ final class PeopleViewModel: ObservableObject {
                     self?.hasError = true
                     self?.error = error as? NetworkManager.NetworkError
                 }
+            }
+        }
+    }
+    
+    /// Fetch users asynchronously
+    /// - Parameter page: users on page
+    func fetchUsersAsync(onPage page: Int = 1) async {
+        
+        isLoading = true
+        
+        defer { isLoading = false }
+        
+        do {
+            
+            let response = try await NetworkManager.shared.request(endPoint: .users(page: page), type: UsersResponse.self)
+            self.users = response.data
+            
+        } catch {
+            
+            self.hasError = true
+            
+            if let networkError = error as? NetworkManager.NetworkError {
+                self.error = networkError
+            } else {
+                self.error = .customError(error: error)
             }
         }
     }

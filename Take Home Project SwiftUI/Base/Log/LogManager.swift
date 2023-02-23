@@ -34,11 +34,11 @@ extension LogManager {
         
         switch type {
         case .info:
-            logger.info("🟢 Info: \(message)")
+            logger.info("\n🟢 Info: \(message)")
         case .warning:
-            logger.warning("🟡 Warning: \(message)")
+            logger.warning("\n🟡 Warning: \(message)")
         case .error(let error):
-            logger.error("🔴 Error: \(error.localizedDescription)")
+            logger.error("\n🔴 Error: \(error.localizedDescription)")
         }
     }
     
@@ -50,7 +50,7 @@ extension LogManager {
         
         let urlString = request.url?.absoluteString
         
-        let httpBody = request.httpBody?.debugDescription
+        let httpBody = request.httpBody
         
         var message = "\n➡️\n"
         
@@ -67,7 +67,8 @@ extension LogManager {
         }
         
         if let httpBody = httpBody {
-            message.append("Http Body: \(httpBody)\n")
+            let data = String(decoding: httpBody, as: UTF8.self)
+            message.append("Http Body: \(data)\n")
         }
         
         message.append("⬅️\n")

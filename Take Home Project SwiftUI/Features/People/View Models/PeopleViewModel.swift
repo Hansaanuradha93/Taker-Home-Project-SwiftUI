@@ -9,10 +9,47 @@ import Foundation
 
 @MainActor final class PeopleViewModel: ObservableObject {
     
+    // MARK: Properties
     @Published private(set) var users: [User] = []
     @Published private(set) var error: NetworkManager.NetworkError?
     @Published var hasError: Bool = false
     @Published private(set) var isLoading: Bool = false
+    
+}
+
+// MARK: - Async Methods
+extension PeopleViewModel {
+    
+    /// Fetch users asynchronously
+    /// - Parameter page: users on page
+    func fetchUsersAsync(onPage page: Int = 1) async {
+        
+        isLoading = true
+        
+        // this will be called once everything in this method is completed
+        defer { isLoading = false }
+        
+        do {
+            
+            let response = try await NetworkManager.shared.request(endPoint: .users(page: page), type: UsersResponse.self)
+            self.users = response.data
+            
+        } catch {
+            
+            self.hasError = true
+            log(withType: .error(error: error))
+            
+            if let networkError = error as? NetworkManager.NetworkError {
+                self.error = networkError
+            } else {
+                self.error = .customError(error: error)
+            }
+        }
+    }
+}
+
+// MARK: - Methods
+extension PeopleViewModel {
     
     /// Fetch users
     /// - Parameter page: users on page
@@ -37,31 +74,6 @@ import Foundation
                     self?.hasError = true
                     self?.error = error as? NetworkManager.NetworkError
                 }
-            }
-        }
-    }
-    
-    /// Fetch users asynchronously
-    /// - Parameter page: users on page
-    func fetchUsersAsync(onPage page: Int = 1) async {
-        
-        isLoading = true
-        
-        defer { isLoading = false }
-        
-        do {
-            
-            let response = try await NetworkManager.shared.request(endPoint: .users(page: page), type: UsersResponse.self)
-            self.users = response.data
-            
-        } catch {
-            
-            self.hasError = true
-            
-            if let networkError = error as? NetworkManager.NetworkError {
-                self.error = networkError
-            } else {
-                self.error = .customError(error: error)
             }
         }
     }

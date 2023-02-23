@@ -46,8 +46,8 @@ struct UserDetailsView: View {
             
         }
         .navigationTitle("Details")
-        .onAppear {
-            viewModel.fetchUserDetails(for: userId)
+        .task {
+            await viewModel.fetchUserDetailsAsync(for: userId)
         }
         .alert(isPresented: $viewModel.hasError,
                error: viewModel.error) {
@@ -74,7 +74,11 @@ struct UserDetailsView_Previews: PreviewProvider {
 private extension UserDetailsView {
     
     var okButton: some View {
-        Button("OK") {}
+        Button("Retry") {
+            Task {
+                await viewModel.fetchUserDetailsAsync(for: userId)
+            }
+        }
     }
 }
 

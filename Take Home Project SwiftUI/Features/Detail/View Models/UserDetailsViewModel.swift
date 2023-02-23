@@ -7,13 +7,49 @@
 
 import Foundation
 
-final class UserDetailsViewModel: ObservableObject {
+@MainActor final class UserDetailsViewModel: ObservableObject {
     
+    // MARK: Properties
     @Published private(set) var userInfo: UserDetailsResponse?
     @Published private(set) var error: NetworkManager.NetworkError?
     @Published var hasError: Bool = false
     @Published private(set) var isLoading: Bool = false
+}
+
+// MARK: - Async Methods
+extension UserDetailsViewModel {
     
+    /// Fetch user details asynchronously
+    /// - Parameter userId: id for the user
+    func fetchUserDetailsAsync(for userId: Int) async {
+        
+        isLoading = true
+        
+        // this will be called once everything in this method is completed
+        defer { isLoading = false }
+        
+        do {
+            let response = try await NetworkManager.shared.request(endPoint: .userDetails(id: userId),type: UserDetailsResponse.self)
+            userInfo = response
+        } catch {
+            
+            hasError = true
+            log(withType: .error(error: error))
+            
+            if let networkError = error as? NetworkManager.NetworkError {
+                self.error = networkError
+            } else {
+                self.error = .customError(error: error)
+            }
+        }
+    }
+}
+
+// MARK: - Methods
+extension UserDetailsViewModel {
+    
+    /// Fetch user detials
+    /// - Parameter userId: id for the user
     func fetchUserDetails(for userId: Int) {
         
         isLoading = true
@@ -23,8 +59,8 @@ final class UserDetailsViewModel: ObservableObject {
             
             DispatchQueue.main.async {
                 
-                defer { self?.isLoading = false }
-
+                self?.isLoading = false
+                
                 switch result {
                     
                 case .success(let response):

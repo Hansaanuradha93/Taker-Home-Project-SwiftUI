@@ -35,9 +35,9 @@ extension PeopleViewModel {
             self.users = response.data
             
         } catch {
+            log(withType: .error(error: error))
             
             self.hasError = true
-            log(withType: .error(error: error))
             
             if let networkError = error as? NetworkManager.NetworkError {
                 self.error = networkError

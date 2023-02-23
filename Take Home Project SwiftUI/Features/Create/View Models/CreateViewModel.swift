@@ -7,15 +7,60 @@
 
 import Foundation
 
-final class CreateViewModel: ObservableObject {
+@MainActor final class CreateViewModel: ObservableObject {
     
+    // MARK: Properties
     @Published var newUser = NewUser()
     @Published private(set) var submissionState: SubmissionState?
     @Published private(set) var error: FormError?
     @Published var hasError: Bool = false
     
     private let validator = CreateValidator()
+}
+
+// MARK: - Async Methods
+extension CreateViewModel {
     
+    /// Create new user asynchronously
+    func createAsync() async {
+        
+        do {
+            
+            try validator.validate(newUser)
+            
+            submissionState = .submitting
+
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            let data = try? encoder.encode(newUser)
+            
+            try await NetworkManager.shared.request(endPoint: .createUser(data: data))
+            
+            log(message: "New user created", withType: .info)
+            submissionState = .successful
+            
+        } catch {
+            log(withType: .error(error: error))
+            
+            submissionState = .unsuccessful
+
+            hasError = true
+            
+            if let networkError = error as? NetworkManager.NetworkError {
+                self.error = .network(error: networkError)
+            }
+            
+            if let validationError = error as? CreateValidator.CreateValidatorError {
+                self.error = .validation(error: validationError)
+            }
+        }
+    }
+}
+
+// MARK: - Methods
+extension CreateViewModel {
+    
+    /// Create new user
     func create() {
         
         do {

@@ -32,9 +32,9 @@ extension UserDetailsViewModel {
             let response = try await NetworkManager.shared.request(endPoint: .userDetails(id: userId),type: UserDetailsResponse.self)
             userInfo = response
         } catch {
-            
-            hasError = true
             log(withType: .error(error: error))
+
+            hasError = true
             
             if let networkError = error as? NetworkManager.NetworkError {
                 self.error = networkError

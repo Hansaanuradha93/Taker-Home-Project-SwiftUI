@@ -171,12 +171,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		47A8058029A5248500BAC03B /* Usre Defaults */ = {
+		47A8058029A5248500BAC03B /* User Defaults */ = {
 			isa = PBXGroup;
 			children = (
 				47A8058129A524A300BAC03B /* UserDefaultsKeys.swift */,
 			);
-			path = "Usre Defaults";
+			path = "User Defaults";
 			sourceTree = "<group>";
 		};
 		47ED3A25299532ED00AE39C3 = {
@@ -279,7 +279,7 @@
 		47ED3A4929954A4400AE39C3 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				47A8058029A5248500BAC03B /* Usre Defaults */,
+				47A8058029A5248500BAC03B /* User Defaults */,
 				47A8057A29A51E4100BAC03B /* Haptics */,
 				473DA45729A224A900DFFE04 /* Log */,
 				4730271129A0993B00817BD1 /* API */,

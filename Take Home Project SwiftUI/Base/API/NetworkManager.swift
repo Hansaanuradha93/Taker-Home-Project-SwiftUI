@@ -31,9 +31,9 @@ extension NetworkManager {
             return
         }
         
-        LogManager.shared.log(message: url.absoluteString, withType: .info)
-
         let urlRequest = buildRequest(from: url, methodType: endPoint.methodType)
+        
+        log(urlRequest)
                 
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             
@@ -49,14 +49,12 @@ extension NetworkManager {
                 return
             }
             
-            
             guard let data = data else {
                 completion(.failure(NetworkError.invalidData))
                 return
             }
             
             do {
-                
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
@@ -82,8 +80,10 @@ extension NetworkManager {
             completion(.failure(NetworkError.invalidURL))
             return
         }
-
+        
         let urlRequest = buildRequest(from: url, methodType: endPoint.methodType)
+        
+        log(urlRequest)
                 
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             

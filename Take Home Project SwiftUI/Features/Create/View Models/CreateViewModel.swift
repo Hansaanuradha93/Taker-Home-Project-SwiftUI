@@ -34,11 +34,11 @@ final class CreateViewModel: ObservableObject {
                     switch result {
                         
                     case .success():
-                        LogManager.shared.log(message: "New user created", withType: .info)
+                        log(message: "New user created", withType: .info)
                         self?.submissionState = .successful
                         
                     case .failure(let error):
-                        LogManager.shared.log(withType: .error(error: error))
+                        log(withType: .error(error: error))
                         self?.submissionState = .unsuccessful
                         self?.hasError = true
                         
@@ -50,7 +50,7 @@ final class CreateViewModel: ObservableObject {
             }
             
         } catch {
-            LogManager.shared.log(withType: .error(error: error))
+            log(withType: .error(error: error))
             
             self.hasError = true
             if let validationError = error as? CreateValidator.CreateValidatorError {

@@ -31,7 +31,7 @@ final class PeopleViewModel: ObservableObject {
                     self?.users = response.data
                     
                 case .failure(let error):
-                    LogManager.shared.log(withType: .error(error: error))
+                    log(withType: .error(error: error))
                     self?.hasError = true
                     self?.error = error as? NetworkManager.NetworkError
                 }

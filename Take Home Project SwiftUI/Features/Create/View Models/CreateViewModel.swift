@@ -32,7 +32,7 @@ extension CreateViewModel {
 
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase
-            let data = try? encoder.encode(newUser)
+            let data = try encoder.encode(newUser)
             
             try await NetworkManager.shared.request(endPoint: .createUser(data: data))
             
@@ -42,16 +42,21 @@ extension CreateViewModel {
         } catch {
             log(withType: .error(error: error))
             
-            submissionState = .unsuccessful
-
             hasError = true
+
+            submissionState = .unsuccessful
             
-            if let networkError = error as? NetworkManager.NetworkError {
-                self.error = .network(error: networkError)
-            }
+            switch error {
+                
+            case is NetworkManager.NetworkError:
+                self.error = .network(error: error as! NetworkManager.NetworkError)
+                
+            case is CreateValidator.CreateValidatorError:
+                self.error = .validation(error: error as! CreateValidator.CreateValidatorError)
+                
             
-            if let validationError = error as? CreateValidator.CreateValidatorError {
-                self.error = .validation(error: validationError)
+            default:
+                self.error = .system(error: error)
             }
         }
     }
@@ -121,6 +126,7 @@ extension CreateViewModel {
     enum FormError: LocalizedError {
         case network(error: LocalizedError)
         case validation(error: LocalizedError)
+        case system(error: Error)
     }
 }
 
@@ -131,6 +137,8 @@ extension CreateViewModel.FormError {
         switch self {
         case .network(let error),
              .validation(let error):
+            return error.errorDescription
+        case .system(let error):
             return error.localizedDescription
         }
     }

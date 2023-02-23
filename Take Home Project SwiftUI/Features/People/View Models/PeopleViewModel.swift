@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PeopleViewModel: ObservableObject {
+@MainActor final class PeopleViewModel: ObservableObject {
     
     @Published private(set) var users: [User] = []
     @Published private(set) var error: NetworkManager.NetworkError?
@@ -24,8 +24,8 @@ final class PeopleViewModel: ObservableObject {
                                       type: UsersResponse.self) { [weak self] result in
             
             DispatchQueue.main.async {
-                
-                defer { self?.isLoading = false }
+                                
+                self?.isLoading = false
                 
                 switch result {
                     

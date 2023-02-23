@@ -7,7 +7,7 @@
 
 import Foundation
 
-@MainActor final class PeopleViewModel: ObservableObject {
+final class PeopleViewModel: ObservableObject {
     
     // MARK: Properties
     @Published private(set) var users: [User] = []
@@ -22,6 +22,7 @@ extension PeopleViewModel {
     
     /// Fetch users asynchronously
     /// - Parameter page: users on page
+    @MainActor
     func fetchUsersAsync(onPage page: Int = 1) async {
         
         isLoading = true
@@ -62,7 +63,8 @@ extension PeopleViewModel {
             
             DispatchQueue.main.async {
                                 
-                self?.isLoading = false
+                // this will be called once everything in this method is completed
+                defer { self?.isLoading = false }
                 
                 switch result {
                     

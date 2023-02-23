@@ -7,7 +7,7 @@
 
 import Foundation
 
-@MainActor final class CreateViewModel: ObservableObject {
+final class CreateViewModel: ObservableObject {
     
     // MARK: Properties
     @Published var newUser = NewUser()
@@ -22,6 +22,7 @@ import Foundation
 extension CreateViewModel {
     
     /// Create new user asynchronously
+    @MainActor
     func createAsync() async {
         
         do {

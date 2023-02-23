@@ -7,7 +7,7 @@
 
 import Foundation
 
-@MainActor final class UserDetailsViewModel: ObservableObject {
+final class UserDetailsViewModel: ObservableObject {
     
     // MARK: Properties
     @Published private(set) var userInfo: UserDetailsResponse?
@@ -21,6 +21,7 @@ extension UserDetailsViewModel {
     
     /// Fetch user details asynchronously
     /// - Parameter userId: id for the user
+    @MainActor
     func fetchUserDetailsAsync(for userId: Int) async {
         
         isLoading = true
@@ -59,8 +60,9 @@ extension UserDetailsViewModel {
             
             DispatchQueue.main.async {
                 
-                self?.isLoading = false
-                
+                // this will be called once everything in this method is completed
+                defer { self?.isLoading = false }
+
                 switch result {
                     
                 case .success(let response):

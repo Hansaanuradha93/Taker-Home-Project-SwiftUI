@@ -14,10 +14,67 @@ final class NetworkManager {
     private init() {}
 }
 
+// MARK: - Async API Calls
+extension NetworkManager {
+    
+    /// Request api with async function to return data
+    /// - Parameters:
+    ///   - endPoint: Endpoint url
+    ///   - type: Response decoding type
+    /// - Returns: Decoded Type
+    func request<T: Codable>(endPoint: EndPoint,
+                             type: T.Type) async throws -> T {
+        
+        guard let url = endPoint.url else {
+            throw NetworkError.invalidURL
+        }
+        
+        let urlRequest = buildRequest(from: url, methodType: endPoint.methodType)
+        
+        log(urlRequest)
+
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        guard let response = response as? HTTPURLResponse,
+              (200...300) ~= response.statusCode else {
+            let statusCode = (response as! HTTPURLResponse).statusCode
+            throw NetworkError.invalidStatusCode(statusCode: statusCode)
+        }
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let dataResponse = try decoder.decode(type, from: data)
+        
+        return dataResponse
+    }
+    
+    /// Request api with async function to return the result
+    /// - Parameters:
+    ///   - endPoint: Endpoint url
+    func request(endPoint: EndPoint) async throws {
+        
+        guard let url = endPoint.url else {
+            throw NetworkError.invalidURL
+        }
+        
+        let urlRequest = buildRequest(from: url, methodType: endPoint.methodType)
+        
+        log(urlRequest)
+        
+        let (_, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        guard let response = response as? HTTPURLResponse,
+              (200...300) ~= response.statusCode else {
+            let statusCode = (response as! HTTPURLResponse).statusCode
+            throw NetworkError.invalidStatusCode(statusCode: statusCode)
+        }
+    }
+}
+
 // MARK: - API Calls
 extension NetworkManager {
     
-    /// Request api and resturns decoded data
+    /// Request api and returns decoded data
     /// - Parameters:
     ///   - endPoint: Endpoint url
     ///   - type: Response decoding type

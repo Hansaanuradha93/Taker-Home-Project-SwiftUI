@@ -76,16 +76,18 @@ extension EndPoint {
 extension EndPoint {
     
     private var queryComponents: [URLQueryItem] {
-        var components = [URLQueryItem]()
         
-        guard let parameters = parameters else { return components }
-        
-        for(key, value) in parameters {
-            let queryItem = URLQueryItem(name: key, value: "\(value)")
-            components.append(queryItem)
+        var components = parameters?.compactMap { item in
+            URLQueryItem(name: item.key, value: "\(item.value)")
         }
         
-        return components
+        #if DEBUG
+        components?.append(
+            URLQueryItem(name: "delay", value: "1")
+        )
+        #endif
+        
+        return components ?? []
     }
 }
 
@@ -117,13 +119,6 @@ extension EndPoint {
         components.host = host
         components.path = path
         components.queryItems = queryComponents
-        
-        #if DEBUG
-        components.queryItems?.append(
-            URLQueryItem(name: "delay", value: "1")
-        )
-        #endif
-        
         return components.url
     }
 }

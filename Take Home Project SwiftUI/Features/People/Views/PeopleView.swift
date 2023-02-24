@@ -14,6 +14,7 @@ struct PeopleView: View {
     @StateObject private var viewModel = PeopleViewModel()
     @State private var shouldShowCreate = false
     @State private var shouldShowSuccess: Bool = false
+    @State private var hasAppeared: Bool = false
     
     var body: some View {
         NavigationView {
@@ -42,12 +43,19 @@ struct PeopleView: View {
             }
             .navigationTitle("People")
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    refreshButton
+                }
+                
                 ToolbarItem(placement: .primaryAction) {
                     createButton
                 }
             }
             .task {
-                await viewModel.fetchUsersAsync()
+                if !hasAppeared {
+                    await viewModel.fetchUsersAsync()
+                    hasAppeared = true
+                }
             }
             .sheet(isPresented: $shouldShowCreate) {
                 CreateView {
@@ -91,6 +99,16 @@ private extension PeopleView {
         
         ToolbarButton(image: Symbols.plus) {
             shouldShowCreate.toggle()
+        }
+        .disabled(viewModel.isLoading)
+    }
+    
+    var refreshButton: some View {
+        
+        ToolbarButton(image: Symbols.refresh) {
+            Task {
+                await viewModel.fetchUsersAsync()
+            }
         }
         .disabled(viewModel.isLoading)
     }

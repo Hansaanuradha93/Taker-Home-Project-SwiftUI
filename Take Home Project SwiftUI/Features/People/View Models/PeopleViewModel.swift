@@ -35,8 +35,8 @@ extension PeopleViewModel {
     @MainActor
     func fetchUsersAsync() async {
         
-        page = 1
-
+        reset()
+        
         viewState = .loading
         
         // this will be called once everything in this method is completed
@@ -126,6 +126,18 @@ extension PeopleViewModel {
     
     func hasReachedEnd(of user: User) -> Bool {
         users.last?.id == user.id
+    }
+}
+
+// MARK: Private Methods
+extension PeopleViewModel {
+    
+    func reset() {
+        if viewState == .finished {
+            users.removeAll()
+            page = 1
+            viewState = nil
+        }
     }
 }
 

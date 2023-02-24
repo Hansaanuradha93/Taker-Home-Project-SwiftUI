@@ -34,6 +34,12 @@ struct PeopleView: View {
                                     UserDetailsView(userId: user.id)
                                 } label: {
                                     PersonItemView(user: user)
+                                        .task {
+                                            
+                                            if viewModel.hasReachedEnd(of: user) && !viewModel.isFetching {
+                                                await viewModel.fetchNextSetOfUsersAsync()
+                                            }
+                                        }
                                 }
                             }
                         }

@@ -13,7 +13,17 @@ final class PeopleViewModel: ObservableObject {
     @Published private(set) var users: [User] = []
     @Published private(set) var error: NetworkManager.NetworkError?
     @Published var hasError: Bool = false
-    @Published private(set) var isLoading: Bool = false
+    @Published private(set) var viewState: ViewState?
+    
+    private var page: Int = 1
+    
+    var isLoading: Bool {
+        viewState == .loading
+    }
+    
+    var isFetching: Bool {
+        viewState == .fetching
+    }
     
 }
 
@@ -23,17 +33,47 @@ extension PeopleViewModel {
     /// Fetch users asynchronously
     /// - Parameter page: users on page
     @MainActor
-    func fetchUsersAsync(onPage page: Int = 1) async {
+    func fetchUsersAsync() async {
         
-        isLoading = true
+        page = 1
+
+        viewState = .loading
         
         // this will be called once everything in this method is completed
-        defer { isLoading = false }
+        defer { viewState = .finished }
         
         do {
             
             let response = try await NetworkManager.shared.request(endPoint: .users(page: page), type: UsersResponse.self)
             self.users = response.data
+            
+        } catch {
+            log(withType: .error(error: error))
+            
+            self.hasError = true
+            
+            if let networkError = error as? NetworkManager.NetworkError {
+                self.error = networkError
+            } else {
+                self.error = .customError(error: error)
+            }
+        }
+    }
+    
+    @MainActor
+    func fetchNextSetOfUsersAsync() async {
+        
+        page += 1
+        
+        viewState = .fetching
+        
+        // this will be called once everything in this method is completed
+        defer { viewState = .finished }
+
+        do {
+            
+            let response = try await NetworkManager.shared.request(endPoint: .users(page: page), type: UsersResponse.self)
+            self.users.append(contentsOf: response.data) 
             
         } catch {
             log(withType: .error(error: error))
@@ -54,17 +94,17 @@ extension PeopleViewModel {
     
     /// Fetch users
     /// - Parameter page: users on page
-    func fetchUsers(onPage page: Int = 1) {
-        
-        isLoading = true
-        
+    func fetchUsers() {
+                
+        viewState = .loading
+
         NetworkManager.shared.request(endPoint: .users(page: page),
                                       type: UsersResponse.self) { [weak self] result in
             
             DispatchQueue.main.async {
                                 
                 // this will be called once everything in this method is completed
-                defer { self?.isLoading = false }
+                defer { self?.viewState = .finished }
                 
                 switch result {
                     
@@ -78,5 +118,22 @@ extension PeopleViewModel {
                 }
             }
         }
+    }
+}
+
+// MARK: - Helper Methods
+extension PeopleViewModel {
+    
+    func hasReachedEnd(of user: User) -> Bool {
+        users.last?.id == user.id
+    }
+}
+
+// MARK: - ViewState
+extension PeopleViewModel {
+    enum ViewState {
+        case fetching
+        case loading
+        case finished
     }
 }

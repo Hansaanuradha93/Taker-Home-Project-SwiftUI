@@ -30,7 +30,6 @@
 		47A8057C29A51E4D00BAC03B /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8057B29A51E4D00BAC03B /* HapticManager.swift */; };
 		47A8057E29A5231800BAC03B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8057D29A5231800BAC03B /* SettingsView.swift */; };
 		47A8058229A524A300BAC03B /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8058129A524A300BAC03B /* UserDefaultsKeys.swift */; };
-		47C3BFE929AA00BB001C883F /* Take_Home_Project_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C3BFE829AA00BB001C883F /* Take_Home_Project_SwiftUITests.swift */; };
 		47C3BFF129AA00EC001C883F /* JSONMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C3BFF029AA00EC001C883F /* JSONMapperTests.swift */; };
 		47EB3CB529A12FCA00E5DCE5 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */; };
 		47EB3CB729A1306000E5DCE5 /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */; };
@@ -76,7 +75,6 @@
 		47A8057D29A5231800BAC03B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		47A8058129A524A300BAC03B /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		47C3BFE629AA00BB001C883F /* Take Home Project SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Take Home Project SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		47C3BFE829AA00BB001C883F /* Take_Home_Project_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Take_Home_Project_SwiftUITests.swift; sourceTree = "<group>"; };
 		47C3BFF029AA00EC001C883F /* JSONMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapperTests.swift; sourceTree = "<group>"; };
 		47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				47C3BFEF29AA00DA001C883F /* Mapper */,
-				47C3BFE829AA00BB001C883F /* Take_Home_Project_SwiftUITests.swift */,
 			);
 			path = "Take Home Project SwiftUITests";
 			sourceTree = "<group>";
@@ -507,7 +504,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				47C3BFF129AA00EC001C883F /* JSONMapperTests.swift in Sources */,
-				47C3BFE929AA00BB001C883F /* Take_Home_Project_SwiftUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

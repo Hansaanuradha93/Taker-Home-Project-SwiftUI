@@ -30,6 +30,8 @@
 		47A8057C29A51E4D00BAC03B /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8057B29A51E4D00BAC03B /* HapticManager.swift */; };
 		47A8057E29A5231800BAC03B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8057D29A5231800BAC03B /* SettingsView.swift */; };
 		47A8058229A524A300BAC03B /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8058129A524A300BAC03B /* UserDefaultsKeys.swift */; };
+		47C3BFE929AA00BB001C883F /* Take_Home_Project_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C3BFE829AA00BB001C883F /* Take_Home_Project_SwiftUITests.swift */; };
+		47C3BFF129AA00EC001C883F /* JSONMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C3BFF029AA00EC001C883F /* JSONMapperTests.swift */; };
 		47EB3CB529A12FCA00E5DCE5 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */; };
 		47EB3CB729A1306000E5DCE5 /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */; };
 		47ED3A32299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A31299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift */; };
@@ -38,6 +40,16 @@
 		47ED3A412995466400AE39C3 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A402995466400AE39C3 /* Symbols.swift */; };
 		47ED3A43299548B100AE39C3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A42299548B100AE39C3 /* Theme.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		47C3BFEA29AA00BB001C883F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47ED3A26299532ED00AE39C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47ED3A2D299532ED00AE39C3;
+			remoteInfo = "Take Home Project SwiftUI";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4703B96729A121B400B6CA78 /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -63,6 +75,9 @@
 		47A8057B29A51E4D00BAC03B /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		47A8057D29A5231800BAC03B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		47A8058129A524A300BAC03B /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		47C3BFE629AA00BB001C883F /* Take Home Project SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Take Home Project SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47C3BFE829AA00BB001C883F /* Take_Home_Project_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Take_Home_Project_SwiftUITests.swift; sourceTree = "<group>"; };
+		47C3BFF029AA00EC001C883F /* JSONMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapperTests.swift; sourceTree = "<group>"; };
 		47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
 		47ED3A2E299532ED00AE39C3 /* Take Home Project SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Take Home Project SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +90,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		47C3BFE329AA00BB001C883F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47ED3A2B299532ED00AE39C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -179,10 +201,28 @@
 			path = "User Defaults";
 			sourceTree = "<group>";
 		};
+		47C3BFE729AA00BB001C883F /* Take Home Project SwiftUITests */ = {
+			isa = PBXGroup;
+			children = (
+				47C3BFEF29AA00DA001C883F /* Mapper */,
+				47C3BFE829AA00BB001C883F /* Take_Home_Project_SwiftUITests.swift */,
+			);
+			path = "Take Home Project SwiftUITests";
+			sourceTree = "<group>";
+		};
+		47C3BFEF29AA00DA001C883F /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				47C3BFF029AA00EC001C883F /* JSONMapperTests.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
 		47ED3A25299532ED00AE39C3 = {
 			isa = PBXGroup;
 			children = (
 				47ED3A30299532ED00AE39C3 /* Take Home Project SwiftUI */,
+				47C3BFE729AA00BB001C883F /* Take Home Project SwiftUITests */,
 				47ED3A2F299532ED00AE39C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -191,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				47ED3A2E299532ED00AE39C3 /* Take Home Project SwiftUI.app */,
+				47C3BFE629AA00BB001C883F /* Take Home Project SwiftUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -366,6 +407,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		47C3BFE529AA00BB001C883F /* Take Home Project SwiftUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47C3BFEE29AA00BB001C883F /* Build configuration list for PBXNativeTarget "Take Home Project SwiftUITests" */;
+			buildPhases = (
+				47C3BFE229AA00BB001C883F /* Sources */,
+				47C3BFE329AA00BB001C883F /* Frameworks */,
+				47C3BFE429AA00BB001C883F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				47C3BFEB29AA00BB001C883F /* PBXTargetDependency */,
+			);
+			name = "Take Home Project SwiftUITests";
+			productName = "Take Home Project SwiftUITests";
+			productReference = 47C3BFE629AA00BB001C883F /* Take Home Project SwiftUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		47ED3A2D299532ED00AE39C3 /* Take Home Project SwiftUI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47ED3A3C299532EF00AE39C3 /* Build configuration list for PBXNativeTarget "Take Home Project SwiftUI" */;
@@ -393,6 +452,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					47C3BFE529AA00BB001C883F = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 47ED3A2D299532ED00AE39C3;
+					};
 					47ED3A2D299532ED00AE39C3 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -412,11 +475,19 @@
 			projectRoot = "";
 			targets = (
 				47ED3A2D299532ED00AE39C3 /* Take Home Project SwiftUI */,
+				47C3BFE529AA00BB001C883F /* Take Home Project SwiftUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		47C3BFE429AA00BB001C883F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47ED3A2C299532ED00AE39C3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -431,6 +502,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		47C3BFE229AA00BB001C883F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47C3BFF129AA00EC001C883F /* JSONMapperTests.swift in Sources */,
+				47C3BFE929AA00BB001C883F /* Take_Home_Project_SwiftUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47ED3A2A299532ED00AE39C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,7 +546,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		47C3BFEB29AA00BB001C883F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 47ED3A2D299532ED00AE39C3 /* Take Home Project SwiftUI */;
+			targetProxy = 47C3BFEA29AA00BB001C883F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		47C3BFEC29AA00BB001C883F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7BXSU3YQGA;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.castleCode.Take-Home-Project-SwiftUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Take Home Project SwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Take Home Project SwiftUI";
+			};
+			name = Debug;
+		};
+		47C3BFED29AA00BB001C883F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7BXSU3YQGA;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.castleCode.Take-Home-Project-SwiftUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Take Home Project SwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Take Home Project SwiftUI";
+			};
+			name = Release;
+		};
 		47ED3A3A299532EF00AE39C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -648,6 +772,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		47C3BFEE29AA00BB001C883F /* Build configuration list for PBXNativeTarget "Take Home Project SwiftUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47C3BFEC29AA00BB001C883F /* Debug */,
+				47C3BFED29AA00BB001C883F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		47ED3A29299532ED00AE39C3 /* Build configuration list for PBXProject "Take Home Project SwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

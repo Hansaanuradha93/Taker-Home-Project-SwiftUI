@@ -38,6 +38,7 @@
 		47ED3A39299532EF00AE39C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47ED3A38299532EF00AE39C3 /* Preview Assets.xcassets */; };
 		47ED3A412995466400AE39C3 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A402995466400AE39C3 /* Symbols.swift */; };
 		47ED3A43299548B100AE39C3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A42299548B100AE39C3 /* Theme.swift */; };
+		47FEB1F929AB24E90058645A /* CreateFormValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FEB1F829AB24E90058645A /* CreateFormValidatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		47ED3A402995466400AE39C3 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		47ED3A42299548B100AE39C3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		47ED3A5329954CCC00AE39C3 /* Take-Home-Project-SwiftUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Take-Home-Project-SwiftUI-Info.plist"; sourceTree = SOURCE_ROOT; };
+		47FEB1F829AB24E90058645A /* CreateFormValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFormValidatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 		47C3BFE729AA00BB001C883F /* Take Home Project SwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
+				47FEB1F729AB24900058645A /* Form */,
 				47C3BFEF29AA00DA001C883F /* Mapper */,
 			);
 			path = "Take Home Project SwiftUITests";
@@ -401,6 +404,14 @@
 			path = "View Models";
 			sourceTree = "<group>";
 		};
+		47FEB1F729AB24900058645A /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				47FEB1F829AB24E90058645A /* CreateFormValidatorTests.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -503,6 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47FEB1F929AB24E90058645A /* CreateFormValidatorTests.swift in Sources */,
 				47C3BFF129AA00EC001C883F /* JSONMapperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

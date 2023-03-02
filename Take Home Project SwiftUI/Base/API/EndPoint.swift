@@ -19,7 +19,7 @@ enum EndPoint {
 // MARK: - HTTP Methods
 extension EndPoint {
     
-    enum MethodType {
+    enum MethodType: Equatable {
         case GET
         case POST(data: Data?)
         case PUT(data: Data?)
@@ -29,18 +29,18 @@ extension EndPoint {
 
 // MARK: - Scheme
 extension EndPoint {
-    private var scheme: String { return "https" }
+    var scheme: String { return "https" }
 }
 
 // MARK: - Host
 extension EndPoint {
-    private var host: String { return "reqres.in" }
+    var host: String { return "reqres.in" }
 }
 
 // MARK: - Path
 extension EndPoint {
     
-    private var path: String {
+     var path: String {
         switch self {
         case .users:
             return "/api/users"
@@ -59,7 +59,7 @@ extension EndPoint {
 // MARK: - Parameters
 extension EndPoint {
     
-    private var parameters: [String : Any]? {
+    var parameters: [String : Any]? {
         switch self {
         case .users(let page):
             return ["page": "\(page)"]
@@ -75,19 +75,22 @@ extension EndPoint {
 // MARK: - Query Components
 extension EndPoint {
     
-    private var queryComponents: [URLQueryItem] {
+    var queryComponents: [URLQueryItem] {
         
-        var components = parameters?.compactMap { item in
-            URLQueryItem(name: item.key, value: "\(item.value)")
+        var components: [URLQueryItem] = []
+        
+        parameters?.forEach { item in
+            let component = URLQueryItem(name: item.key, value: "\(item.value)")
+            components.append(component)
         }
         
         #if DEBUG
-        components?.append(
+        components.append(
             URLQueryItem(name: "delay", value: "1")
         )
         #endif
         
-        return components ?? []
+        return components
     }
 }
 
@@ -118,7 +121,7 @@ extension EndPoint {
         components.scheme = scheme
         components.host = host
         components.path = path
-        components.queryItems = queryComponents
+        components.queryItems = queryComponents.isEmpty ? nil : queryComponents
         return components.url
     }
 }

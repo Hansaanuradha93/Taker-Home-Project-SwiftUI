@@ -11,6 +11,7 @@
 		4730271329A0994B00817BD1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4730271229A0994B00817BD1 /* NetworkManager.swift */; };
 		473DA45929A224CA00DFFE04 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DA45829A224CA00DFFE04 /* LogManager.swift */; };
 		473DA45B29A25A7700DFFE04 /* CheckmarkPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473DA45A29A25A7700DFFE04 /* CheckmarkPopoverView.swift */; };
+		475A451129B10E7A008A6801 /* NetworkingEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A451029B10E7A008A6801 /* NetworkingEndpointTests.swift */; };
 		476AFEA32998E6F000C4A3C7 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFEA22998E6F000C4A3C7 /* UserDetailsView.swift */; };
 		476AFEA52998E98B00C4A3C7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476AFEA42998E98B00C4A3C7 /* BackgroundView.swift */; };
 		4774793F299FA86500CCB754 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4774793E299FA86500CCB754 /* CreateView.swift */; };
@@ -56,6 +57,7 @@
 		4730271229A0994B00817BD1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		473DA45829A224CA00DFFE04 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		473DA45A29A25A7700DFFE04 /* CheckmarkPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkPopoverView.swift; sourceTree = "<group>"; };
+		475A451029B10E7A008A6801 /* NetworkingEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingEndpointTests.swift; sourceTree = "<group>"; };
 		476AFEA22998E6F000C4A3C7 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		476AFEA42998E98B00C4A3C7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		4774793E299FA86500CCB754 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
@@ -122,6 +124,22 @@
 				473DA45829A224CA00DFFE04 /* LogManager.swift */,
 			);
 			path = Log;
+			sourceTree = "<group>";
+		};
+		475A450E29B10E3F008A6801 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				475A450F29B10E4E008A6801 /* Endpoint */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		475A450F29B10E4E008A6801 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				475A451029B10E7A008A6801 /* NetworkingEndpointTests.swift */,
+			);
+			path = Endpoint;
 			sourceTree = "<group>";
 		};
 		478079F529976B7B00AE1163 /* JSON */ = {
@@ -204,6 +222,7 @@
 		47C3BFE729AA00BB001C883F /* Take Home Project SwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
+				475A450E29B10E3F008A6801 /* Networking */,
 				47FEB1F729AB24900058645A /* Form */,
 				47C3BFEF29AA00DA001C883F /* Mapper */,
 			);
@@ -516,6 +535,7 @@
 			files = (
 				47FEB1F929AB24E90058645A /* CreateFormValidatorTests.swift in Sources */,
 				47C3BFF129AA00EC001C883F /* JSONMapperTests.swift in Sources */,
+				475A451129B10E7A008A6801 /* NetworkingEndpointTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

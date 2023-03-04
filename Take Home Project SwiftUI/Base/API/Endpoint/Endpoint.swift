@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: Cases
-enum EndPoint {
+enum Endpoint {
     case users(page: Int)
     case userDetails(id: Int)
     case createUser(data: Data?)
@@ -17,7 +17,7 @@ enum EndPoint {
 }
 
 // MARK: - HTTP Methods
-extension EndPoint {
+extension Endpoint {
     
     enum MethodType: Equatable {
         case GET
@@ -28,17 +28,17 @@ extension EndPoint {
 }
 
 // MARK: - Scheme
-extension EndPoint {
+extension Endpoint {
     var scheme: String { return "https" }
 }
 
 // MARK: - Host
-extension EndPoint {
+extension Endpoint {
     var host: String { return "reqres.in" }
 }
 
 // MARK: - Path
-extension EndPoint {
+extension Endpoint {
     
      var path: String {
         switch self {
@@ -57,7 +57,7 @@ extension EndPoint {
 }
 
 // MARK: - Parameters
-extension EndPoint {
+extension Endpoint {
     
     var parameters: [String : Any]? {
         switch self {
@@ -73,7 +73,7 @@ extension EndPoint {
 }
 
 // MARK: - Query Components
-extension EndPoint {
+extension Endpoint {
     
     var queryComponents: [URLQueryItem] {
         
@@ -95,7 +95,7 @@ extension EndPoint {
 }
 
 // MARK: - Http Method Type
-extension EndPoint {
+extension Endpoint {
     
     var methodType: MethodType {
         switch self {
@@ -114,7 +114,7 @@ extension EndPoint {
 }
 
 // MARK: - Url
-extension EndPoint {
+extension Endpoint {
     
     var url: URL? {
         var components = URLComponents()

@@ -22,7 +22,7 @@ extension NetworkManager {
     ///   - endPoint: Endpoint url
     ///   - type: Response decoding type
     /// - Returns: Decoded Type
-    func request<T: Codable>(endPoint: EndPoint,
+    func request<T: Codable>(endPoint: Endpoint,
                              type: T.Type) async throws -> T {
         
         guard let url = endPoint.url else {
@@ -51,7 +51,7 @@ extension NetworkManager {
     /// Request api with async function to return the result
     /// - Parameters:
     ///   - endPoint: Endpoint url
-    func request(endPoint: EndPoint) async throws {
+    func request(endPoint: Endpoint) async throws {
         
         guard let url = endPoint.url else {
             throw NetworkError.invalidURL
@@ -79,7 +79,7 @@ extension NetworkManager {
     ///   - endPoint: Endpoint url
     ///   - type: Response decoding type
     ///   - completion: Returns decoded json data or error
-    func request<T: Codable>(endPoint: EndPoint,
+    func request<T: Codable>(endPoint: Endpoint,
                              type: T.Type,
                              completion: @escaping (Result<T, Error>) -> Void) {
         
@@ -130,7 +130,7 @@ extension NetworkManager {
     /// - Parameters:
     ///   - endPoint: Endpoint url
     ///   - completion: Returns status or error
-    func request(endPoint: EndPoint,
+    func request(endPoint: Endpoint,
                  completion: @escaping (Result<Void, Error>) -> Void) {
         
         guard let url = endPoint.url else {
@@ -172,7 +172,7 @@ private extension NetworkManager {
     ///   - methodType: Http method type
     /// - Returns: URLObject with http methods, and http body
     func buildRequest(from url: URL,
-                      methodType: EndPoint.MethodType) -> URLRequest {
+                      methodType: Endpoint.MethodType) -> URLRequest {
         
         var request = URLRequest(url: url)
         

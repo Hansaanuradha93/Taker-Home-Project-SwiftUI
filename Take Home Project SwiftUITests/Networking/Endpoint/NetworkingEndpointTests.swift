@@ -12,7 +12,7 @@ final class NetworkingEndpointTests: XCTestCase {
 
     func test_with_users_endpoint_request_is_valid() throws {
         
-        let endpoint = EndPoint.users(page: 1)
+        let endpoint = Endpoint.users(page: 1)
         
         XCTAssertEqual(endpoint.scheme, "https", "The scheme should be https")
         XCTAssertEqual(endpoint.host, "reqres.in", "The hose should be reqres.in")
@@ -26,7 +26,7 @@ final class NetworkingEndpointTests: XCTestCase {
     func test_with_user_details_endpoint_request_is_valid() throws {
         
         let userId = 1
-        let endpoint = EndPoint.userDetails(id: userId)
+        let endpoint = Endpoint.userDetails(id: userId)
         
         XCTAssertEqual(endpoint.scheme, "https", "The scheme should be https")
         XCTAssertEqual(endpoint.host, "reqres.in", "The hose should be reqres.in")
@@ -39,7 +39,7 @@ final class NetworkingEndpointTests: XCTestCase {
     
     func test_with_create_user_endpoint_request_is_valid() throws {
                                 
-        let endpoint = EndPoint.createUser(data: nil)
+        let endpoint = Endpoint.createUser(data: nil)
         
         XCTAssertEqual(endpoint.scheme, "https", "The scheme should be https")
         XCTAssertEqual(endpoint.host, "reqres.in", "The hose should be reqres.in")
@@ -53,7 +53,7 @@ final class NetworkingEndpointTests: XCTestCase {
     func test_with_update_user_endpoint_request_is_valid() throws {
         
         let userId = 1
-        let endpoint = EndPoint.updateUser(id: userId, data: nil)
+        let endpoint = Endpoint.updateUser(id: userId, data: nil)
         
         XCTAssertEqual(endpoint.scheme, "https", "The scheme should be https")
         XCTAssertEqual(endpoint.host, "reqres.in", "The hose should be reqres.in")
@@ -67,7 +67,7 @@ final class NetworkingEndpointTests: XCTestCase {
     func test_with_delete_user_endpoint_request_is_valid() throws {
         
         let userId = 1
-        let endpoint = EndPoint.deleteUser(id: userId)
+        let endpoint = Endpoint.deleteUser(id: userId)
         
         XCTAssertEqual(endpoint.scheme, "https", "The scheme should be https")
         XCTAssertEqual(endpoint.host, "reqres.in", "The hose should be reqres.in")

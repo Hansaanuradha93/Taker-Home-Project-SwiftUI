@@ -22,7 +22,8 @@ extension NetworkManager {
     ///   - endPoint: Endpoint url
     ///   - type: Response decoding type
     /// - Returns: Decoded Type
-    func request<T: Codable>(endPoint: Endpoint,
+    func request<T: Codable>(session: URLSession = .shared,
+                             endPoint: Endpoint,
                              type: T.Type) async throws -> T {
         
         guard let url = endPoint.url else {
@@ -33,7 +34,7 @@ extension NetworkManager {
         
         log(urlRequest)
 
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        let (data, response) = try await session.data(for: urlRequest)
         
         guard let response = response as? HTTPURLResponse,
               (200...300) ~= response.statusCode else {
@@ -51,7 +52,8 @@ extension NetworkManager {
     /// Request api with async function to return the result
     /// - Parameters:
     ///   - endPoint: Endpoint url
-    func request(endPoint: Endpoint) async throws {
+    func request(session: URLSession = .shared,
+                 endPoint: Endpoint) async throws {
         
         guard let url = endPoint.url else {
             throw NetworkError.invalidURL
@@ -61,7 +63,7 @@ extension NetworkManager {
         
         log(urlRequest)
         
-        let (_, response) = try await URLSession.shared.data(for: urlRequest)
+        let (_, response) = try await session.data(for: urlRequest)
         
         guard let response = response as? HTTPURLResponse,
               (200...300) ~= response.statusCode else {

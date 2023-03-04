@@ -49,5 +49,33 @@ final class NetworkingEndpointTests: XCTestCase {
         
         XCTAssertEqual(endpoint.url!.absoluteString, "https://reqres.in/api/users?delay=1", "Url should be https://reqres.in/api/users")
     }
+    
+    func test_with_update_user_endpoint_request_is_valid() throws {
+        
+        let userId = 1
+        let endpoint = EndPoint.updateUser(id: userId, data: nil)
+        
+        XCTAssertEqual(endpoint.scheme, "https", "The scheme should be https")
+        XCTAssertEqual(endpoint.host, "reqres.in", "The hose should be reqres.in")
+        XCTAssertEqual(endpoint.path, "/api/users/\(userId)", "The path should be /api/users/\(userId)")
+        XCTAssertEqual(endpoint.methodType, .PUT(data: nil), "The method type should be PUT")
+        XCTAssertEqual(endpoint.queryComponents.first!, URLQueryItem(name: "delay", value: "1"), "The first query component should be delay=1")
+        
+        XCTAssertEqual(endpoint.url!.absoluteString, "https://reqres.in/api/users/\(userId)?delay=1", "https://reqres.in/api/users/\(userId)?delay=1")
+    }
+    
+    func test_with_delete_user_endpoint_request_is_valid() throws {
+        
+        let userId = 1
+        let endpoint = EndPoint.deleteUser(id: userId)
+        
+        XCTAssertEqual(endpoint.scheme, "https", "The scheme should be https")
+        XCTAssertEqual(endpoint.host, "reqres.in", "The hose should be reqres.in")
+        XCTAssertEqual(endpoint.path, "/api/users/\(userId)", "The path should be /api/users/\(userId)")
+        XCTAssertEqual(endpoint.methodType, .DELETE, "The method type should be DELETE")
+        XCTAssertEqual(endpoint.queryComponents.first!, URLQueryItem(name: "delay", value: "1"), "The first query component should be delay=1")
+        
+        XCTAssertEqual(endpoint.url!.absoluteString, "https://reqres.in/api/users/\(userId)?delay=1", "https://reqres.in/api/users/\(userId)?delay=1")
+    }
 
 }

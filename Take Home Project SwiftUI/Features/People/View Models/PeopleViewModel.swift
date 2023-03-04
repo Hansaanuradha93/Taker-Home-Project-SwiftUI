@@ -55,7 +55,7 @@ extension PeopleViewModel {
             if let networkError = error as? NetworkManager.NetworkError {
                 self.error = networkError
             } else {
-                self.error = .customError(error: error)
+                self.error = .custom(error: error)
             }
         }
     }
@@ -83,7 +83,7 @@ extension PeopleViewModel {
             if let networkError = error as? NetworkManager.NetworkError {
                 self.error = networkError
             } else {
-                self.error = .customError(error: error)
+                self.error = .custom(error: error)
             }
         }
     }

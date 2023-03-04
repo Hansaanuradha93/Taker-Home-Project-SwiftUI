@@ -97,7 +97,7 @@ extension NetworkManager {
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             
             if let error = error {
-                completion(.failure(NetworkError.customError(error: error)))
+                completion(.failure(NetworkError.custom(error: error)))
                 return
             }
             
@@ -147,7 +147,7 @@ extension NetworkManager {
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             
             if let error = error {
-                completion(.failure(NetworkError.customError(error: error)))
+                completion(.failure(NetworkError.custom(error: error)))
                 return
             }
             
@@ -200,10 +200,32 @@ extension NetworkManager {
     
     enum NetworkError: LocalizedError {
         case invalidURL
-        case customError(error: Error)
+        case custom(error: Error)
         case invalidStatusCode(statusCode: Int)
         case invalidData
         case faildToDecode(error: Error)
+    }
+}
+
+extension NetworkManager.NetworkError: Equatable {
+    
+    static func == (lhs: NetworkManager.NetworkError, rhs: NetworkManager.NetworkError) -> Bool {
+        
+        switch (lhs, rhs) {
+            
+        case (.invalidURL, .invalidURL):
+            return true
+        case (.custom(let lhsType), .custom(let rhsType)):
+            return lhsType.localizedDescription == rhsType.localizedDescription
+        case (.invalidStatusCode(let lhsType), .invalidStatusCode(let rhsType)):
+            return lhsType == rhsType
+        case (.invalidData, .invalidData):
+            return true
+        case (.faildToDecode(let lhsType), .faildToDecode(let rhsType)):
+            return lhsType.localizedDescription == rhsType.localizedDescription
+        default:
+            return false
+        }
     }
 }
 
@@ -214,7 +236,7 @@ extension NetworkManager.NetworkError {
         switch self {
         case .invalidURL:
             return "URL isn't valid"
-        case .customError(error: let error):
+        case .custom(error: let error):
             return "Something went wrong: \(error.localizedDescription)"
         case .invalidStatusCode(statusCode: let statusCode):
             return "Status code: \(statusCode) falls in to the wrong range"

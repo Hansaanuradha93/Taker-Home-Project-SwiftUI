@@ -34,6 +34,8 @@
 		47A8057E29A5231800BAC03B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8057D29A5231800BAC03B /* SettingsView.swift */; };
 		47A8058229A524A300BAC03B /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8058129A524A300BAC03B /* UserDefaultsKeys.swift */; };
 		47C3BFF129AA00EC001C883F /* JSONMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C3BFF029AA00EC001C883F /* JSONMapperTests.swift */; };
+		47C40E1629B475AE008F03EC /* PeopleViewModelSuccessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C40E1529B475AE008F03EC /* PeopleViewModelSuccessTests.swift */; };
+		47C40E1829B47653008F03EC /* NetworkManagerUsersResponseSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C40E1729B47653008F03EC /* NetworkManagerUsersResponseSuccessMock.swift */; };
 		47EB3CB529A12FCA00E5DCE5 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */; };
 		47EB3CB729A1306000E5DCE5 /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */; };
 		47ED3A32299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ED3A31299532ED00AE39C3 /* Take_Home_Project_SwiftUIApp.swift */; };
@@ -83,6 +85,8 @@
 		47A8058129A524A300BAC03B /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		47C3BFE629AA00BB001C883F /* Take Home Project SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Take Home Project SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47C3BFF029AA00EC001C883F /* JSONMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapperTests.swift; sourceTree = "<group>"; };
+		47C40E1529B475AE008F03EC /* PeopleViewModelSuccessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModelSuccessTests.swift; sourceTree = "<group>"; };
+		47C40E1729B47653008F03EC /* NetworkManagerUsersResponseSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerUsersResponseSuccessMock.swift; sourceTree = "<group>"; };
 		47EB3CB429A12FCA00E5DCE5 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		47EB3CB629A1306000E5DCE5 /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
 		47ED3A2E299532ED00AE39C3 /* Take Home Project SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Take Home Project SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,13 +117,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4730271129A0993B00817BD1 /* API */ = {
+		4730271129A0993B00817BD1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				4731D62F29B31F1700576B6E /* Endpoint */,
 				4731D63029B31F3100576B6E /* Managers */,
 			);
-			path = API;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		4731D62F29B31F1700576B6E /* Endpoint */ = {
@@ -142,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				4731D63229B31F6800576B6E /* MockURLSessionProtocol.swift */,
+				47C40E1729B47653008F03EC /* NetworkManagerUsersResponseSuccessMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 		47C3BFE729AA00BB001C883F /* Take Home Project SwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
+				47C40E1429B4757C008F03EC /* People */,
 				475A450E29B10E3F008A6801 /* Networking */,
 				47FEB1F729AB24900058645A /* Form */,
 				47C3BFEF29AA00DA001C883F /* Mapper */,
@@ -273,6 +279,14 @@
 				47C3BFF029AA00EC001C883F /* JSONMapperTests.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		47C40E1429B4757C008F03EC /* People */ = {
+			isa = PBXGroup;
+			children = (
+				47C40E1529B475AE008F03EC /* PeopleViewModelSuccessTests.swift */,
+			);
+			path = People;
 			sourceTree = "<group>";
 		};
 		47ED3A25299532ED00AE39C3 = {
@@ -380,7 +394,7 @@
 				47A8058029A5248500BAC03B /* User Defaults */,
 				47A8057A29A51E4100BAC03B /* Haptics */,
 				473DA45729A224A900DFFE04 /* Log */,
-				4730271129A0993B00817BD1 /* API */,
+				4730271129A0993B00817BD1 /* Network */,
 				47807A132997E6E800AE1163 /* Views */,
 				47807A0229976EF900AE1163 /* Mapper */,
 				478079FD29976E7F00AE1163 /* Model */,
@@ -572,8 +586,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4731D63729B3235100576B6E /* NetworkManagerTests.swift in Sources */,
+				47C40E1829B47653008F03EC /* NetworkManagerUsersResponseSuccessMock.swift in Sources */,
 				47FEB1F929AB24E90058645A /* CreateFormValidatorTests.swift in Sources */,
 				47C3BFF129AA00EC001C883F /* JSONMapperTests.swift in Sources */,
+				47C40E1629B475AE008F03EC /* PeopleViewModelSuccessTests.swift in Sources */,
 				4731D63429B3219500576B6E /* MockURLSessionProtocol.swift in Sources */,
 				475A451129B10E7A008A6801 /* NetworkingEndpointTests.swift in Sources */,
 			);

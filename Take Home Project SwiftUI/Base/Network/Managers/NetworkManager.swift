@@ -7,6 +7,16 @@
 
 import Foundation
 
+protocol NetworkManagerImplementation {
+    
+    func request<T: Codable>(session: URLSession,
+                             endPoint: Endpoint,
+                             type: T.Type) async throws -> T
+    
+    func request(session: URLSession,
+                 endPoint: Endpoint) async throws
+}
+
 final class NetworkManager {
     
     static let shared = NetworkManager()
@@ -15,7 +25,7 @@ final class NetworkManager {
 }
 
 // MARK: - Async API Calls
-extension NetworkManager {
+extension NetworkManager: NetworkManagerImplementation {
     
     /// Request api with async function to return data
     /// - Parameters:

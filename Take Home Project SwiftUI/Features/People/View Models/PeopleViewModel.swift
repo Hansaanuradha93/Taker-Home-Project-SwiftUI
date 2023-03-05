@@ -12,10 +12,12 @@ final class PeopleViewModel: ObservableObject {
     // MARK: Properties
     @Published private(set) var users: [User] = []
     @Published private(set) var error: NetworkManager.NetworkError?
-    @Published var hasError: Bool = false
     @Published private(set) var viewState: ViewState?
+    @Published var hasError: Bool = false
     
-    private var page: Int = 1
+    private(set) var page: Int = 1
+    
+    private let networkManager: NetworkManagerImplementation!
     
     var isLoading: Bool {
         viewState == .loading
@@ -23,6 +25,11 @@ final class PeopleViewModel: ObservableObject {
     
     var isFetching: Bool {
         viewState == .fetching
+    }
+    
+    // MARK: Initializers
+    init(networkManager: NetworkManagerImplementation = NetworkManager.shared) {
+        self.networkManager = networkManager
     }
     
 }
@@ -44,7 +51,7 @@ extension PeopleViewModel {
         
         do {
             
-            let response = try await NetworkManager.shared.request(endPoint: .users(page: page), type: UsersResponse.self)
+            let response = try await networkManager.request(session: .shared, endPoint: .users(page: page), type: UsersResponse.self)
             self.users = response.data
             
         } catch {
@@ -72,7 +79,7 @@ extension PeopleViewModel {
 
         do {
             
-            let response = try await NetworkManager.shared.request(endPoint: .users(page: page), type: UsersResponse.self)
+            let response = try await networkManager.request(session: .shared, endPoint: .users(page: page), type: UsersResponse.self)
             self.users.append(contentsOf: response.data) 
             
         } catch {
@@ -92,8 +99,9 @@ extension PeopleViewModel {
 // MARK: - Methods
 extension PeopleViewModel {
     
-    /// Fetch users
+    /// Fetch users with traditional api call with help of a closure
     /// - Parameter page: users on page
+    /*
     func fetchUsers() {
                 
         viewState = .loading
@@ -119,6 +127,7 @@ extension PeopleViewModel {
             }
         }
     }
+    */
 }
 
 // MARK: - Helper Methods

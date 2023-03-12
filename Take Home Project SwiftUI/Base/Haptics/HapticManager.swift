@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 fileprivate final class HapticManager {
     
@@ -27,7 +28,9 @@ extension HapticManager {
 
 func haptic(_ notification: UINotificationFeedbackGenerator.FeedbackType) {
     
-    if UserDefaults.standard.bool(forKey: UserDefaultsKeys.hapticsEnabled) {
+    @AppStorage(UserDefaultsKeys.hapticsEnabled) var isHapticsEnabled: Bool = true
+        
+    if isHapticsEnabled {
         HapticManager.shared.trigger(notification)
     }
 }
